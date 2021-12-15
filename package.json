@@ -1,0 +1,23 @@
+{
+  "name": "new-rubyroid-site",
+  "version": "1.0.0",
+  "description": "auto tests for new rubyroid site",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --forceExit --runInBand",
+    "example": "jest --forceExit -i ./tests/example.test.js -t \"a\"",
+    "report": "allure generate allure-results --clean -o allure-report && allure open allure-report",
+    "report-clear": "allure generate --clean --output allure-results"
+  },
+  "author": "koliada",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-jest": "^27.4.5",
+    "chai": "^4.3.4",
+    "jest": "^27.4.5",
+    "jest-puppeteer": "^6.0.3",
+    "mocha": "^9.1.3",
+    "puppeteer": "^13.0.0"
+  }
+}
