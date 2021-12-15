@@ -16,8 +16,14 @@
     "babel-jest": "^27.4.5",
     "chai": "^4.3.4",
     "jest": "^27.4.5",
+    "jest-allure": "^0.1.3",
+    "jest-extended": "^1.2.0",
     "jest-puppeteer": "^6.0.3",
     "mocha": "^9.1.3",
     "puppeteer": "^13.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5"
   }
 }

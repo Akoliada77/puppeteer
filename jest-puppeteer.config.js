@@ -1,5 +1,4 @@
 const puppeteer = require('puppeteer')
-const creds = require ('./creds.json') 
 
 module.exports = {
     launch: {
