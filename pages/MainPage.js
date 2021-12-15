@@ -6,10 +6,16 @@ const creds = require ('../creds.json')
 
 export default class MainPage {
     async visit() {
-        const firstSection = '#cursorCirclePhoto-0'
-        await page.goto('https://new.rubyroidlabs.dev/')
+        const firstSection = '.styles-module--containerHeadlineCounters--3aZY7'
+        const url = 'https://new.rubyroidlabs.dev/'
+        await page.goto(url)
         expect(await isElementVisible(firstSection)).to.be.true
-        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/')
+        expect(page.url()).to.equal(url)
     }
+    async authorization() {
+        await page.authenticate({ 
+            username: creds["credentials.admin.login"] ,
+            password: creds["credentials.admin.password"]})
+    } 
 
 }
