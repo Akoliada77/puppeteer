@@ -1,3 +1,4 @@
-node_modules
-creds.json
+node_modules 
 example.test.js
+creds.json
+package-lock.json
