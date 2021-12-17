@@ -20,4 +20,16 @@ describe ('header', () => {
         await mainpage.visit()
         await header.checkLocation()
     })
+    it('Content of Section', async () =>{
+        await mainpage.visit()
+        await header.checkSectionContent()
+    })
+    it('Content of Section', async () =>{
+        await mainpage.visit()
+        await header.logoLocation()
+    })
+    it('Content of Section', async () =>{
+        await mainpage.visit()
+        await header.logoRedirecting()
+    })
 })

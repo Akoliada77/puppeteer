@@ -17,6 +17,6 @@ describe ('example', () => {
 
     it('', async () =>{
         await mainpage.visit()
-        await header.checkLocation()
+        await header.logoRedirecting()
     })
 })
