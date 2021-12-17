@@ -24,12 +24,13 @@ describe ('header', () => {
         await mainpage.visit()
         await header.checkSectionContent()
     })
-    it('Content of Section', async () =>{
+    it('Logo location', async () =>{
         await mainpage.visit()
         await header.logoLocation()
     })
-    it('Content of Section', async () =>{
+    it('Logo redirection', async () =>{
         await mainpage.visit()
         await header.logoRedirecting()
     })
+    
 })

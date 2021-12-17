@@ -8,7 +8,7 @@ let mainpage
 mainpage = new Mainpage()
 
 export default class Header {
-    async checkLocation() {
+    async headerLocation() {
         const sectionSelector = '.styles-module--header--3iuKV'
         const section = await page.$(sectionSelector)
         const boundingBox = await section.boundingBox()
@@ -41,5 +41,17 @@ export default class Header {
         await click(page, logoSelector)
         expect(page.url()).to.equal('https://new.rubyroidlabs.dev/')
         expect(await isElementVisible(firstSectionSelector)).to.be.true
+    }
+    async rorButtonHover() {
+        const rorSelector = '.styles-module--linkRor--TEgXa.styles-module--link--ZNrzI'
+        const rorElement = await page.$(rorSelector)
+        const data = await page.evaluate(() => {
+            const elements = document.body.getElementsByTagName('.styles-module--linkRor--TEgXa.styles-module--link--ZNrzI')
+            return [...elements].map(element => {
+                element.focus()
+                return window.getComputedStyle(element).getPropertyValue('margin-right')
+            })
+          })
+          console.log(data)
     }
 }
