@@ -35,7 +35,7 @@ export default class Header {
         expect(boundingBox.x).to.be.lessThan(42)
         expect(boundingBox.y).to.be.lessThan(25)
     }
-    async logoRedirecting() {
+    async logoRedirection() {
         const logoSelector = '.styles-module--logo--3Gocn'
         const firstSectionSelector = '.styles-module--containerHeadlineCounters--3aZY7'
         await click(page, logoSelector)
@@ -46,12 +46,54 @@ export default class Header {
         const rorSelector = '.styles-module--linkRor--TEgXa.styles-module--link--ZNrzI'
         const rorElement = await page.$(rorSelector)
         const data = await page.evaluate(() => {
-            const elements = document.body.getElementsByTagName('.styles-module--linkRor--TEgXa.styles-module--link--ZNrzI')
-            return [...elements].map(element => {
-                element.focus()
+            const element = document.body.getElementsByTagName('.styles-module--linkRor--TEgXa.styles-module--link--ZNrzI')
+            return [...element].map(el => {
+                el.focus()
                 return window.getComputedStyle(element).getPropertyValue('margin-right')
             })
           })
           console.log(data)
+    }
+    async rorLinkRedirect(){
+        const rorLinkSelector = await page.$('.styles-module--linkRor--TEgXa.styles-module--link--ZNrzI')
+        const href = await (await rorLinkSelector.getProperty('href')).jsonValue();
+        expect(href).to.equal('https://new.rubyroidlabs.dev/')
+        const rorLinkSelector2 = '#content > div > header > div > header > div.styles-module--navigation--2vh3P > div.styles-module--nav--2gL6i > div:nth-child(1) > a'
+        await click(page, rorLinkSelector2)
+        await page.waitForTimeout(2000)
+        // await page.waitForNavigation()
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/')
+    }
+    async contactLinkRedirect(){
+        const contactLinkSelector = await page.$('.styles-module--link--1BKwL')
+        const href = await (await contactLinkSelector.getProperty('href')).jsonValue();
+        expect(href).to.equal('https://new.rubyroidlabs.dev/contact')
+        const contactLinkSelector2 = ('#content > div > header > div > header > div.styles-module--navigation--2vh3P > div.styles-module--nav--2gL6i > div.styles-module--link--ZNrzI > a')
+        await click(page, contactLinkSelector2)
+        await page.waitForNavigation()
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/contact')
+    }
+    async contactUsArrowToTheRight() {
+        const contactUsXpath= '//*[@id="content"]/div/header/div/header/div[2]/div[1]/div[2]/a/span/text()'
+        const arrowSelector = '#content > div > header > div > header > div.styles-module--navigation--2vh3P > div.styles-module--nav--2gL6i > div.styles-module--link--ZNrzI > a > svg'
+        const contactBoundingBox = await (await page.waitForXPath(contactUsXpath)).boundingBox()
+        const arrowBoundingBox = await(await page.$(arrowSelector)).boundingBox()
+        expect(contactBoundingBox.x).to.be.lessThan(arrowBoundingBox.x)
+    }
+    async burgerMenuLocation() {
+        const burgerSelector = '.styles-module--button--2i6R4'
+        const burgerBoundingBox = await(await page.$(burgerSelector)).boundingBox()
+        expect(burgerBoundingBox.x).to.be.greaterThan(710)
+        expect(burgerBoundingBox.y).to.be.lessThan(30)
+    }
+    async burgerMenuOpening() {
+        const burgerSelector = '.styles-module--button--2i6R4' 
+        const menuHiddenSeletor = '.styles-module--menu--1Hjqu.styles-module--hidden--2Lebr'
+        const menuVisibleSelector = '.styles-module--menu--1Hjqu'
+        // expect(await isElementVisible(menuHiddenSeletor)).to.be.false
+        await shouldNotExist(page, menuVisibleSelector)
+        expect(await isElementVisible(menuVisibleSelector)).to.be.false
+        await click(page, burgerSelector)
+        expect(await isElementVisible(menuVisibleSelector)).to.be.true
     }
 }

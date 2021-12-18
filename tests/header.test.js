@@ -18,7 +18,7 @@ describe ('header', () => {
     })
     it('Header location', async () =>{
         await mainpage.visit()
-        await header.checkLocation()
+        await header.headerLocation()
     })
     it('Content of Section', async () =>{
         await mainpage.visit()
@@ -30,7 +30,22 @@ describe ('header', () => {
     })
     it('Logo redirection', async () =>{
         await mainpage.visit()
-        await header.logoRedirecting()
+        await header.logoRedirection()
     })
-    
+    it('RoR link redirection', async () =>{
+        await mainpage.visit()
+        await header.rorLinkRedirect()
+    })
+    it('Contact link redirection', async () =>{
+        await mainpage.visit()
+        await header.contactLinkRedirect()
+    })
+    it('Arrow location', async () =>{
+        await mainpage.visit()
+        await header.contactUsArrowToTheRight()
+    })
+    it('Burger Menu location', async () =>{
+        await mainpage.visit()
+        await header.burgerMenuLocation()
+    })
 })
