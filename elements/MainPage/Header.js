@@ -139,4 +139,43 @@ export default class Header {
         const boundingBoxPlus = await (await page.$(plusSelector)).boundingBox()
         expect(boundingBoxServices.x).to.be.lessThan(boundingBoxPlus.x)
     }
+    async plusOpening() {
+        const plusSelector = '.styles-module--plusFilled--2-FnC.styles-module--plusBtnSvg--1_HRH.styles-module--plusWidth--1YU82'
+        const listOpenedSelector = '.styles-module--addNav--3thAU.styles-module--openNav--iH9Zo'
+        await shouldNotExist(page, listOpenedSelector) 
+        await click(page, plusSelector)
+        expect(await isElementVisible(listOpenedSelector)).to.be.true
+    }
+    async ourWorkRedirection() {
+        const linksSelector = 'div.styles-module--mainNavigation--29RGU > a'
+        const links = await page.$$(linksSelector)
+        await links[1].click()
+        await page.waitForTimeout(2000)
+        // await page.waitForNavigation()
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/case_study')
+    }
+    async clientsRedirection() {
+        const linksSelector = 'div.styles-module--mainNavigation--29RGU > a'
+        const links = await page.$$(linksSelector)
+        await links[2].click()
+        await page.waitForTimeout(2000)
+        // await page.waitForNavigation()
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/#clients')
+    }
+    async teamRedirection() {
+        const linksSelector = 'div.styles-module--mainNavigation--29RGU > a'
+        const links = await page.$$(linksSelector)
+        await links[3].click()
+        await page.waitForTimeout(2000)
+        // await page.waitForNavigation()
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/#team')
+    }
+    async blogRedirection() {
+        const linksSelector = 'div.styles-module--mainNavigation--29RGU > a'
+        const links = await page.$$(linksSelector)
+        await links[4].click()
+        await page.waitForTimeout(2000)
+        // await page.waitForNavigation()
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/blog')
+    }
 }

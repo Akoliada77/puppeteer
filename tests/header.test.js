@@ -67,10 +67,36 @@ describe ('header', () => {
         await header.burgerMenuOpening()
         await header.servicesRedirection()
     })
-    it('Services redirection', async () =>{
+    it('Plus location', async () =>{
         await mainpage.visit()
         await header.burgerMenuOpening()
         await header.plusLocation()
     })
+    it('Plus opening', async () =>{
+        await mainpage.visit()
+        await header.burgerMenuOpening()
+        await header.plusOpening()
+    })
+    it('Our Work link redirection', async () =>{
+        await mainpage.visit()
+        await header.burgerMenuOpening()
+        await header.ourWorkRedirection()
+    })
+    it('Clients link redirection', async () =>{
+        await mainpage.visit()
+        await header.burgerMenuOpening()
+        await header.clientsRedirection()
+    })
+    it('Team link redirection', async () =>{
+        await mainpage.visit()
+        await header.burgerMenuOpening()
+        await header.teamRedirection()
+    })
+    it('Blog link redirection', async () =>{
+        await mainpage.visit()
+        await header.burgerMenuOpening()
+        await header.blogRedirection()
+    })
+
 
 })
