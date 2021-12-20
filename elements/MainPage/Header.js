@@ -55,8 +55,8 @@ export default class Header {
           console.log(data)
     }
     async rorLinkRedirect(){
-        const rorLinkSelector = await page.$('.styles-module--linkRor--TEgXa.styles-module--link--ZNrzI')
-        const href = await (await rorLinkSelector.getProperty('href')).jsonValue();
+        const rorLink = await page.$('.styles-module--linkRor--TEgXa.styles-module--link--ZNrzI')
+        const href = await (await rorLink.getProperty('href')).jsonValue()
         expect(href).to.equal('https://new.rubyroidlabs.dev/')
         const rorLinkSelector2 = '#content > div > header > div > header > div.styles-module--navigation--2vh3P > div.styles-module--nav--2gL6i > div:nth-child(1) > a'
         await click(page, rorLinkSelector2)
@@ -95,5 +95,48 @@ export default class Header {
         expect(await isElementVisible(menuVisibleSelector)).to.be.false
         await click(page, burgerSelector)
         expect(await isElementVisible(menuVisibleSelector)).to.be.true
+    }
+    async modalWindowContent() {
+        const logoSelector = '.styles-module--logo--3Gocn'
+        const linksSelector = '.styles-module--mainNavigation--29RGU'
+        const contactUsLinkSelector = '.styles-module--leftArrowButton--3G3oW.styles-module--innerNav__link--3WDhj'
+        expect(await getCount(page, linksSelector)).to.equal(5)
+        expect(await isElementVisible(logoSelector)).to.be.true 
+        expect(await isElementVisible(contactUsLinkSelector)).to.be.true
+    }
+    async logoLocationInBurgerMenu() {
+        const logoSelector = '.styles-module--logo--3Gocn'
+        const boundingBox = await (await page.$(logoSelector)).boundingBox() 
+        expect(boundingBox.x).to.be.lessThan(42)
+        expect(boundingBox.y).to.be.lessThan(25) 
+    }
+    async logoRedirectionFromBurgerMenu() {
+        const logoSelector = '.styles-module--logo--3Gocn'
+        const firstSectionSelector = '.styles-module--containerHeadlineCounters--3aZY7'
+        await click(page, logoSelector)
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/')
+        expect(await isElementVisible(firstSectionSelector)).to.be.true
+    }
+    async checkThatServicesIsFirst() {
+        // const servicesSelector = 'div.styles-module--mainNavigation--29RGU > a'
+        // const services = await page.$(servicesSelector)
+        // const href = await (await services.getProperty('href')).jsonValue() 
+        const firstLinkSelector = '#menu > div:nth-child(1) > div.styles-module--mainNavigation--29RGU > a'
+        const href = await (await (await page.$(firstLinkSelector)).getProperty('href')).jsonValue()
+        expect(href).to.equal('https://new.rubyroidlabs.dev/services')
+    }
+    async servicesRedirection() {
+        const linksSelector = 'div.styles-module--mainNavigation--29RGU > a'
+        const links = await page.$$(linksSelector)
+        await links[0].click()
+        await page.waitForNavigation()
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/services')
+    }
+    async plusLocation() {
+        const plusSelector = '.styles-module--plusFilled--2-FnC.styles-module--plusBtnSvg--1_HRH.styles-module--plusWidth--1YU82'
+        const servicesLinkSelector = '#menu > div:nth-child(1) > div.styles-module--mainNavigation--29RGU > a'
+        const boundingBoxServices = await (await page.$(servicesLinkSelector)).boundingBox()
+        const boundingBoxPlus = await (await page.$(plusSelector)).boundingBox()
+        expect(boundingBoxServices.x).to.be.lessThan(boundingBoxPlus.x)
     }
 }

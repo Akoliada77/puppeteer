@@ -48,4 +48,29 @@ describe ('header', () => {
         await mainpage.visit()
         await header.burgerMenuLocation()
     })
+    it('Opening burger menu', async () =>{
+        await mainpage.visit()
+        await header.burgerMenuOpening()
+    })
+    it('Burger Menu content', async () =>{
+        await mainpage.visit()
+        await header.burgerMenuOpening()
+        await header.modalWindowContent()
+    })
+    it('Check that Services link is located first', async () =>{
+        await mainpage.visit()
+        await header.burgerMenuOpening()
+        await header.checkThatServicesIsFirst()
+    })
+    it('Services redirection', async () =>{
+        await mainpage.visit()
+        await header.burgerMenuOpening()
+        await header.servicesRedirection()
+    })
+    it('Services redirection', async () =>{
+        await mainpage.visit()
+        await header.burgerMenuOpening()
+        await header.plusLocation()
+    })
+
 })
