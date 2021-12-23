@@ -40,5 +40,13 @@ describe ('Grid Container', () => {
         await mainpage.visit()
         await gridContainer.checkThatTextBlockHasText()
     })
+    it('check description block content', async () =>{
+        await mainpage.visit()
+        await gridContainer.descritionBlockContent()
+    })
+    it('check description block location', async () =>{
+        await mainpage.visit()
+        await gridContainer.descriptionBlockLocation()
+    })
 
 })

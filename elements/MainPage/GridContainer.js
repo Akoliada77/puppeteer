@@ -63,4 +63,30 @@ export default class GridContainer {
         expect(textBox.y).to.be.greaterThan(textBlockBox.y)
         expect(textBlockBox.height).to.be.greaterThan(textBox.height)
     }
+    async descritionBlockContent() {
+        const blockSelector = '.styles-module--blockDescription--dTCz4'
+        const imageSelector = '#content > div > div > section.styles-module--container--1XxoU > div.styles-module--gridContainer--3dAwj > div > div.styles-module--blockDescription--dTCz4 > svg'
+        const textSelector = '.styles-module--textCenter--2Xb_m '
+        expect(await isElementVisible(blockSelector)).to.be.true
+        expect(await isElementVisible(imageSelector)).to.be.true
+        expect(await isElementVisible(textSelector)).to.be.true
+        const blockBox = await(await page.$(blockSelector)).boundingBox()
+        const imageBox = await(await page.$(imageSelector)).boundingBox()
+        const textBox = await(await page.$(textSelector)).boundingBox()
+        expect(imageBox.x).to.be.greaterThan(blockBox.x)
+        expect(imageBox.y).to.be.greaterThan(blockBox.y)
+        expect(textBox.x).to.be.greaterThan(blockBox.x)
+        expect(textBox.y).to.be.greaterThan(blockBox.y)
+    }
+    async descriptionBlockLocation() {
+        const descriptionBlockSelector = '.styles-module--blockDescription--dTCz4'
+        const imageBlockSelector = '.gatsby-image-wrapper.styles-module--teamImage--pX2kk'
+        const sectionSelector = '.styles-module--gridContainer--3dAwj'
+        const descriptionBlockBox = await(await page.$(descriptionBlockSelector)).boundingBox()
+        const imageBlockBox = await(await page.$(imageBlockSelector)).boundingBox()
+        const sectionBox = await(await page.$(sectionSelector)).boundingBox()
+        expect(descriptionBlockBox.y).to.be.greaterThan(imageBlockBox.y)
+        expect(descriptionBlockBox.x+descriptionBlockBox.width).to.be.lessThan(sectionBox.x+sectionBox.width)
+        expect(descriptionBlockBox.y).to.be.greaterThan(1364)
+    }
 }
