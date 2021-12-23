@@ -1,7 +1,7 @@
 import MainPage from '../pages/MainPage'
 import GridContainer from '../elements/MainPage/GridContainer'
 
-describe ('header', () => {
+describe ('Grid Container', () => {
     let mainpage 
     let gridContainer
    
@@ -24,4 +24,21 @@ describe ('header', () => {
         await mainpage.visit()
         await gridContainer.sectionContent()
     })
+    it('check image location', async () =>{
+        await mainpage.visit()
+        await gridContainer.imageLocation()
+    })
+    it('check image block has image', async () =>{
+        await mainpage.visit()
+        await gridContainer.imageBlockHasImage()
+    })
+    it('check text block location', async () =>{
+        await mainpage.visit()
+        await gridContainer.textBlockLocation()
+    })
+    it('check text block has text', async () =>{
+        await mainpage.visit()
+        await gridContainer.checkThatTextBlockHasText()
+    })
+
 })

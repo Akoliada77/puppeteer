@@ -31,4 +31,36 @@ export default class GridContainer {
         expect(await getCount(page, serviceBlocksSelector)).to.equal(6)
         expect(await isElementVisible(circleButtonSelector)).to.be.true
     }
+    async imageLocation() {
+        const imageSelector = '.gatsby-image-wrapper.styles-module--teamImage--pX2kk'
+        const imageBox = await(await page.$(imageSelector)).boundingBox()
+        const sectionSelector = '.styles-module--gridContainer--3dAwj'
+        const sectionBox = await(await page.$(sectionSelector)).boundingBox()
+        expect(imageBox.x).to.be.greaterThan(sectionBox.x)
+        expect(imageBox.x).to.be.greaterThan(430)
+        expect(imageBox.y).to.be.greaterThan(sectionBox.y)
+        expect(imageBox.y).to.be.lessThan(980)
+    }
+    async imageBlockHasImage() {
+        const imageSelector = '[alt="team image"]'
+        const src = await (await (await page.$(imageSelector)).getProperty('src')).jsonValue()
+        expect(src).to.include('team.png')
+    }
+    async textBlockLocation() {
+        const textBlockSelector = '.styles-module--blockTitleText--3N-Ze'
+        const imageBlockSelector = '.gatsby-image-wrapper.styles-module--teamImage--pX2kk'
+        const imageBlockBox = await (await page.$(imageBlockSelector)).boundingBox()
+        const textBlockBox = await (await page.$(textBlockSelector)).boundingBox()
+        expect(textBlockBox.x+textBlockBox.width).to.be.lessThan(imageBlockBox.y)
+    }
+    async checkThatTextBlockHasText() {
+        const textBlockSelector = '.styles-module--blockTitleText--3N-Ze'    
+        const textSelector = '.styles-module--title--1CEMO'
+        const textBlockBox = await (await page.$(textBlockSelector)).boundingBox()
+        const textBox = await(await page.$(textSelector)).boundingBox()
+        expect(await getText(page, textSelector)).to.equal('Custom software development services')
+        expect(textBox.x).to.equal(textBlockBox.x)
+        expect(textBox.y).to.be.greaterThan(textBlockBox.y)
+        expect(textBlockBox.height).to.be.greaterThan(textBox.height)
+    }
 }
