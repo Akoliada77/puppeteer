@@ -127,4 +127,15 @@ export default class GridContainer {
         expect(imageBox.x).to.be.greaterThan(rorBlockBox.x)
         expect(imageBox.y).to.be.greaterThan(rorBlockBox.y)
     }
+    async titleOfRorBlockLocation() {
+        const titleSelector = '#customService-ror_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--titleContainer--3ac2x'
+        const imageSelector = '#customService-ror_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--imageContainer--DYI3k'
+        const rorBlockSelector = '#customService-ror_development'
+        const rorBlockBox = await(await page.$(rorBlockSelector)).boundingBox()
+        const titleBox = await(await page.$(titleSelector)).boundingBox()
+        const imageBox = await(await page.$(imageSelector)).boundingBox()
+        expect (titleBox.y).to.be.greaterThan(imageBox.y)
+        expect (imageBox.x).to.be.greaterThan(rorBlockBox.x)
+        expect (imageBox.y).to.be.greaterThan(rorBlockBox.y)
+    }
 }   

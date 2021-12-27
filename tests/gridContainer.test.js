@@ -64,5 +64,9 @@ describe ('Grid Container', () => {
         await mainpage.visit()
         await gridContainer.imageOfRorBlockLocation()
     })
+    it('Title in RoR service block location ', async () =>{
+        await mainpage.visit()
+        await gridContainer.titleOfRorBlockLocation()
+    })
 
 })
