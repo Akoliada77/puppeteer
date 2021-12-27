@@ -52,4 +52,17 @@ describe ('Grid Container', () => {
         await mainpage.visit()
         await gridContainer.rorServiceBlockLocation()
     })
+    it('RoR service block content', async () =>{
+        await mainpage.visit()
+        await gridContainer.rorSeviceBlockContent()
+    })
+    it('RoR service block redirection', async () =>{
+        await mainpage.visit()
+        await gridContainer.rorServiceBlockRedirection()
+    })
+    it('Image in RoR service block location ', async () =>{
+        await mainpage.visit()
+        await gridContainer.imageOfRorBlockLocation()
+    })
+
 })

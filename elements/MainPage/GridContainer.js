@@ -101,4 +101,30 @@ export default class GridContainer {
         expect(rorServiceBlockBox.y).to.be.greaterThan(titleBlockBox.y)
         expect(rorServiceBlockBox.y).to.be.greaterThan(1442)
     }
+    async rorSeviceBlockContent() {
+        const rorServiceBlockSelector = '.styles-module--link--3cfyl.styles-module--customService--2tD_P.styles-module--ror_development--2oCKz'
+        const imageSelector = '#customService-ror_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--imageContainer--DYI3k'
+        const imageLinkSelector = '#customService-ror_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--imageContainer--DYI3k > img'
+        const titleSelector = '#customService-ror_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--titleContainer--3ac2x'
+        const descriptionSelector = '#customService-ror_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--description--3ETEa'
+        const src = await (await (await page.$(imageLinkSelector)).getProperty('src')).jsonValue()
+        expect(src).to.include('min.svg')
+        expect(await isElementVisible(imageSelector)).to.be.true
+        expect(await isElementVisible(titleSelector)).to.be.true
+        expect(await isElementVisible(descriptionSelector)).to.be.true
+    }
+    async rorServiceBlockRedirection() {
+        const containerSelector = '#customService-ror_development'
+        await click(page, containerSelector)
+        expect(await isElementVisible('.styles-module--container--QpE7y')).to.be.true
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/services/')
+    }
+    async imageOfRorBlockLocation() {
+        const rorBlockSelector = '#customService-ror_development'
+        const imageSelector = '#customService-ror_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--imageContainer--DYI3k'
+        const rorBlockBox = await(await page.$(rorBlockSelector)).boundingBox()
+        const imageBox = await(await page.$(imageSelector)).boundingBox()
+        expect(imageBox.x).to.be.greaterThan(rorBlockBox.x)
+        expect(imageBox.y).to.be.greaterThan(rorBlockBox.y)
+    }
 }   
