@@ -16,11 +16,11 @@ describe ('Grid Container', () => {
         await mainpage.visit()
         await gridContainer.isSectionDisplayed()
     })
-    it('check Grid Container location', async () =>{
+    it('Grid Container location', async () =>{
         await mainpage.visit()
         await gridContainer.sectionLocation()
     })
-    it('check Grid Container content', async () =>{
+    it('Grid Container content', async () =>{
         await mainpage.visit()
         await gridContainer.sectionContent()
     })
@@ -48,5 +48,8 @@ describe ('Grid Container', () => {
         await mainpage.visit()
         await gridContainer.descriptionBlockLocation()
     })
-
+    it('RoR service block location', async () =>{
+        await mainpage.visit()
+        await gridContainer.rorServiceBlockLocation()
+    })
 })

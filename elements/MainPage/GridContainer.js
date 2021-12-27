@@ -89,4 +89,16 @@ export default class GridContainer {
         expect(descriptionBlockBox.x+descriptionBlockBox.width).to.be.lessThan(sectionBox.x+sectionBox.width)
         expect(descriptionBlockBox.y).to.be.greaterThan(1364)
     }
-}
+    async rorServiceBlockLocation() {
+        const rorServiceBlockSelector = '.styles-module--link--3cfyl.styles-module--customService--2tD_P.styles-module--ror_development--2oCKz'
+        const sectionSelector = '.styles-module--gridContainer--3dAwj'
+        const titleBlockSelector = '.styles-module--blockTitleText--3N-Ze'
+        const rorServiceBlockBox = await(await page.$(rorServiceBlockSelector)).boundingBox()
+        const sectionBox = await(await page.$(sectionSelector)).boundingBox()
+        const titleBlockBox = await(await page.$(titleBlockSelector)).boundingBox()
+        expect(rorServiceBlockBox.x).to.be.greaterThan(sectionBox.x)
+        expect(rorServiceBlockBox.x).to.be.lessThan(43)
+        expect(rorServiceBlockBox.y).to.be.greaterThan(titleBlockBox.y)
+        expect(rorServiceBlockBox.y).to.be.greaterThan(1442)
+    }
+}   
