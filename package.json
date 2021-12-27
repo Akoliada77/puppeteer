@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --forceExit --runInBand",
+    "test:incognito": "INCOGNITO=true jest --runInBand",
     "example": "jest --forceExit -i ./tests/example.test.js -t \"a\"",
     "report": "allure generate allure-results --clean -o allure-report && allure open allure-report",
     "report-clear": "allure generate --clean --output allure-results"
