@@ -138,4 +138,23 @@ export default class GridContainer {
         expect (imageBox.x).to.be.greaterThan(rorBlockBox.x)
         expect (imageBox.y).to.be.greaterThan(rorBlockBox.y)
     }
+    async titleText() {
+        const titleSelector = '#customService-ror_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--titleContainer--3ac2x > a'
+        expect(await getText(page, titleSelector)).to.be.equal('Ruby on Rails development')
+    }
+    async descriptionLocation() {
+        const descriptionSelector = '#customService-ror_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--description--3ETEa'
+        const imageSelector = '#customService-ror_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--imageContainer--DYI3k'
+        const rorServiceBlockSelector = '#customService-ror_development'
+        const descriptionBox = await(await page.$(descriptionSelector)).boundingBox()
+        const imageBox = await(await page.$(imageSelector)).boundingBox()
+        const rorBLockBox = await(await page.$(rorServiceBlockSelector)).boundingBox()
+        expect(descriptionBox.y).to.be.greaterThan(imageBox.y)
+        expect(descriptionBox.x).to.be.greaterThan(rorBLockBox.x)
+        expect(descriptionBox.y).to.be.greaterThan(rorBLockBox.y)
+    }
+    async descriptionText() {
+        const descriptionXpath = '//*[@id="customService-ror_development"]/div[1]/div[3]/text()'
+        expect(await getTextXpath(page, descriptionXpath)).to.equal('Launch, scale, and upgrade with our full-cycle Ruby and Ruby on Rails development services.') 
+    }
 }   

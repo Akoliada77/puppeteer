@@ -60,13 +60,25 @@ describe ('Grid Container', () => {
         await mainpage.visit()
         await gridContainer.rorServiceBlockRedirection()
     })
-    it('Image in RoR service block location ', async () =>{
+    it('Image in RoR service block location', async () =>{
         await mainpage.visit()
         await gridContainer.imageOfRorBlockLocation()
     })
-    it('Title in RoR service block location ', async () =>{
+    it('Title in RoR service block location', async () =>{
         await mainpage.visit()
         await gridContainer.titleOfRorBlockLocation()
+    })
+    it('Title in RoR service block text', async () =>{
+        await mainpage.visit()
+        await gridContainer.titleText()
+    })
+    it('Description in RoR service block location', async () =>{
+        await mainpage.visit()
+        await gridContainer.descriptionLocation()
+    })
+    it('Description in RoR service block text', async () =>{
+        await mainpage.visit()
+        await gridContainer.descriptionText()
     })
 
 })
