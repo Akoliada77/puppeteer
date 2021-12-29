@@ -28,5 +28,12 @@ describe ('Development solutions', () => {
         await mainpage.visit()
         await developmentsolutions.titleText()
     })
-
+    it('subtitle of Development solution location', async () =>{
+        await mainpage.visit()
+        await developmentsolutions.subtitleLocation()
+    })
+    it('subtitle of Development solution text', async () =>{
+        await mainpage.visit()
+        await developmentsolutions.subtitleText()
+    })
 })

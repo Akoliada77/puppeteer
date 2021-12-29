@@ -10,7 +10,7 @@ mainpage = new Mainpage()
 // variables for the section
 var sectionSelector = '.styles-module--container--34pZy'
 var titleSelector = '.styles-module--title--iIWVh.undefined'
-var subtitleSelector = '.styles-module--subTitle--1ToGn'
+var subtitleSelector = '#content > div > div > section.styles-module--container--34pZy > div.scrollmagic-pin-spacer > div > div > div.styles-module--description--3_XND > p'
 var slideSelector = '.styles-module--slideWrapper--1e0Kl.slideWrapper'
 var circleButtonSelector = '.styles-module--largeCircleButton--1oaGQ.undefined.styles-module--size--2om9F'
 
@@ -43,6 +43,15 @@ export default class DevelopmentSolutions {
     async subtitleLocation() {
         const subtitleBox = await(await page.$(subtitleSelector)).boundingBox()
         const titleBox = await(await page.$(titleSelector)).boundingBox()
-        expect()
+        const sectionBox = await(await page.$(sectionSelector)).boundingBox()
+        expect(subtitleBox.x).to.be.greaterThan(sectionBox.x)
+        expect(subtitleBox.y).to.be.greaterThan(sectionBox.y)
+        expect(subtitleBox.y).to.be.greaterThan(titleBox.y)
+        expect(subtitleBox.x).to.be.greaterThan(titleBox.x)
+        expect(subtitleBox.x).to.be.greaterThan(260)
     }
-}
+    async subtitleText() {
+        const text = await getText(page, subtitleSelector)
+        expect(text).to.equal('Business challenges vary depending on the company’s situation. We take these differences into account when providing custom software development solutions. ')
+    }
+}  
