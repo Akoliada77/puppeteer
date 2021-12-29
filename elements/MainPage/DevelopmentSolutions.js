@@ -54,4 +54,12 @@ export default class DevelopmentSolutions {
         const text = await getText(page, subtitleSelector)
         expect(text).to.equal('Business challenges vary depending on the company’s situation. We take these differences into account when providing custom software development solutions. ')
     }
+    async sliderLocation() {
+        const sliderBox = await(await page.$(slideSelector)).boundingBox()
+        const sectionBox = await(await page.$(sectionSelector)).boundingBox()
+        const subtitleBox = await(await page.$(subtitleSelector)).boundingBox()
+        expect(sliderBox.x).to.be.greaterThan(sectionBox.x)
+        expect(sliderBox.y).to.be.greaterThan(sectionBox.y)
+        expect(sliderBox.y).to.be.greaterThan(subtitleBox.y)
+    }
 }  

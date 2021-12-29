@@ -36,4 +36,8 @@ describe ('Development solutions', () => {
         await mainpage.visit()
         await developmentsolutions.subtitleText()
     })
+    it('slider of Development solution location', async () =>{
+        await mainpage.visit()
+        await developmentsolutions.sliderLocation()
+    })
 })
