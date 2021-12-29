@@ -40,4 +40,9 @@ describe ('Development solutions', () => {
         await mainpage.visit()
         await developmentsolutions.sliderLocation()
     })
+    it('amount of point in Development solution', async () =>{
+        await mainpage.visit()
+        await developmentsolutions.amountOfPoints()
+    })
+    
 })

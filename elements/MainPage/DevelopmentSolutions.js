@@ -13,6 +13,7 @@ var titleSelector = '.styles-module--title--iIWVh.undefined'
 var subtitleSelector = '#content > div > div > section.styles-module--container--34pZy > div.scrollmagic-pin-spacer > div > div > div.styles-module--description--3_XND > p'
 var slideSelector = '.styles-module--slideWrapper--1e0Kl.slideWrapper'
 var circleButtonSelector = '.styles-module--largeCircleButton--1oaGQ.undefined.styles-module--size--2om9F'
+var pointsSelector = '.styles-module--imgBlock--nYMjz'
 
 export default class DevelopmentSolutions {
     async isSectionDisplayed() {
@@ -62,4 +63,8 @@ export default class DevelopmentSolutions {
         expect(sliderBox.y).to.be.greaterThan(sectionBox.y)
         expect(sliderBox.y).to.be.greaterThan(subtitleBox.y)
     }
+    async amountOfPoints() {
+        expect(await getCount(page, pointsSelector)).to.equal(3) 
+    }
+    
 }  
