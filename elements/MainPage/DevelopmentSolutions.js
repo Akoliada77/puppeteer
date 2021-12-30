@@ -66,5 +66,10 @@ export default class DevelopmentSolutions {
     async amountOfPoints() {
         expect(await getCount(page, pointsSelector)).to.equal(3) 
     }
-    
+    async scrollHorizontally() {
+        expect(await isElementVisible(circleButtonSelector)).to.be.true
+
+    }
+
+
 }  
