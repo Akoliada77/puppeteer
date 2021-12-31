@@ -36,4 +36,12 @@ export default class FirstSection {
         expect(await isElementVisible(counterSelector)).to.be.true
         expect(await isElementVisible(buttonSelector)).to.be.true
     }
+    async titleLocation() {
+        const titleBox = await(await page.$(titleSelector)).boundingBox()
+        const sectionBox = await(await page.$(sectionSelector)).boundingBox()
+        // expect(titleBox.y).to.equal(sectionBox.y)
+        expect(titleBox.x).to.be.greaterThan(sectionBox.x)
+        console.log(titleBox)
+        console.log(sectionBox)
+    }
 }
