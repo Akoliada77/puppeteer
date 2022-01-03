@@ -41,7 +41,8 @@ export default class FirstSection {
         const sectionBox = await(await page.$(sectionSelector)).boundingBox()
         // expect(titleBox.y).to.equal(sectionBox.y)
         expect(titleBox.x).to.be.greaterThan(sectionBox.x)
-        console.log(titleBox)
-        console.log(sectionBox)
+        expect(titleBox.y).to.be.greaterThan(sectionBox.y)
+        expect(titleBox.x).to.be.greaterThan(40)
+        expect(titleBox.x+titleBox.width).to.be.lessThan(sectionBox.width)
     }
 }

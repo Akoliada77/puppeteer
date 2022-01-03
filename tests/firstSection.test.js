@@ -24,5 +24,9 @@ describe ('Development solutions', () => {
         await mainpage.visit()
         await firstsection.sectionContent()
     })
+    it('Title location', async () =>{
+        await mainpage.visit()
+        await firstsection.titleLocation()
+    })
 
 })
