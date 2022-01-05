@@ -58,7 +58,7 @@ export default class FirstSection {
         const subtitleBox = await(await page.$(subtitleSelector)).boundingBox()
         expect(subtitleBox.x).to.be.greaterThan(sectionBox.x)
         expect(subtitleBox.y).to.be.greaterThan(sectionBox.y)
-        expect(subtitleBox.x).to.be.greaterThan(titleBox.x)
+        expect(subtitleBox.x).to.be.equal(titleBox.x)
         expect(subtitleBox.y).to.be.greaterThan(titleBox.y)
     }
 

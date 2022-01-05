@@ -28,5 +28,9 @@ describe ('Development solutions', () => {
         await mainpage.visit()
         await firstsection.titleLocation()
     })
+    it('Subtitle location', async () =>{
+        await mainpage.visit()
+        await firstsection.subtitleLocation()
+    })
 
 })
