@@ -45,4 +45,21 @@ export default class FirstSection {
         expect(titleBox.x).to.be.greaterThan(40)
         expect(titleBox.x+titleBox.width).to.be.lessThan(sectionBox.width)
     }
+    async titleChanging() {
+        let text = await getText(page, titleSelector)
+        const but1Selector = '#content > div > div > section.styles-module--container--FSAdL > div.styles-module--containerHeadlineCounters--3aZY7 > div.styles-module--countersDirection--OX9c4 > div:nth-child(1) > div'
+        const but1 = await page.$(but1Selector)
+        const href = await (await but1.getProperty('class')).jsonValue();
+        console.log(href)
+    }
+    async subtitleLocation() {
+        const sectionBox = await(await page.$(sectionSelector)).boundingBox()
+        const titleBox = await(await page.$(titleSelector)).boundingBox()
+        const subtitleBox = await(await page.$(subtitleSelector)).boundingBox()
+        expect(subtitleBox.x).to.be.greaterThan(sectionBox.x)
+        expect(subtitleBox.y).to.be.greaterThan(sectionBox.y)
+        expect(subtitleBox.x).to.be.greaterThan(titleBox.x)
+        expect(subtitleBox.y).to.be.greaterThan(titleBox.y)
+    }
+
 }
