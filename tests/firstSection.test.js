@@ -32,5 +32,9 @@ describe ('Development solutions', () => {
         await mainpage.visit()
         await firstsection.subtitleLocation()
     })
+    it('Subtitle text changing', async () =>{
+        await mainpage.visit()
+        await firstsection.subtitleChanging()
+    })
 
 })

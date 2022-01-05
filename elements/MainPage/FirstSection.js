@@ -61,5 +61,18 @@ export default class FirstSection {
         expect(subtitleBox.x).to.be.equal(titleBox.x)
         expect(subtitleBox.y).to.be.greaterThan(titleBox.y)
     }
+    async subtitleChanging() {
+        let text = await getText(page, subtitleSelector)
+        expect(text).to.be.equal('We will integrate powerful digital tools into your established workflows and help you optimize your operations with Ruby on Rails.')
+        await page.waitForTimeout(5000)
+        text = await getText(page, subtitleSelector)
+        expect(text).to.be.equal('If you are just starting out, we will leverage advanced technology to help you create a new disruptive product.')
+        await page.waitForTimeout(5000)
+        text = await getText(page, subtitleSelector)
+        expect(text).to.be.equal('Rubyroid Labs is a custom software development company working with your ultimate goals in mind.')
+        await page.waitForTimeout(5000)
+        text = await getText(page, subtitleSelector)
+        expect(text).to.be.equal('We will integrate powerful digital tools into your established workflows and help you optimize your operations with Ruby on Rails.')
+    }
 
 }
