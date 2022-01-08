@@ -49,7 +49,7 @@ export default class FirstSection {
         let text = await getText(page, titleSelector)
         const but1Selector = '#content > div > div > section.styles-module--container--FSAdL > div.styles-module--containerHeadlineCounters--3aZY7 > div.styles-module--countersDirection--OX9c4 > div:nth-child(1) > div'
         const but1 = await page.$(but1Selector)
-        const href = await (await but1.getProperty('class')).jsonValue();
+        // const href = await (await but1.getProperty('class')).jsonValue()
         console.log(href)
     }
     async subtitleLocation() {
@@ -73,6 +73,50 @@ export default class FirstSection {
         await page.waitForTimeout(5000)
         text = await getText(page, subtitleSelector)
         expect(text).to.be.equal('We will integrate powerful digital tools into your established workflows and help you optimize your operations with Ruby on Rails.')
+    }
+    async countersLocation() {
+        const countersBox = await(await page.$(counterSelector)).boundingBox()
+        const titleBox = await(await page.$(titleSelector)).boundingBox()
+        const sectionBox = await(await page.$(sectionSelector)).boundingBox()
+        expect(countersBox.x).to.be.greaterThan(sectionBox.x)
+        expect(countersBox.y).to.be.greaterThan(sectionBox.y)
+        expect(countersBox.x).to.be.lessThan(50)
+    }
+    async countersChanging() {
+        const counter1Selector = '#content > div > div > section.styles-module--container--FSAdL > div.styles-module--containerHeadlineCounters--3aZY7 > div.styles-module--countersDirection--OX9c4 > div:nth-child(1) > div'
+        const counter2Selector = '#content > div > div > section.styles-module--container--FSAdL > div.styles-module--containerHeadlineCounters--3aZY7 > div.styles-module--countersDirection--OX9c4 > div:nth-child(2) > div'
+        const counter3Selector = '#content > div > div > section.styles-module--container--FSAdL > div.styles-module--containerHeadlineCounters--3aZY7 > div.styles-module--countersDirection--OX9c4 > div:nth-child(3) > div'
+        const counter1 = await page.$(counter1Selector)
+        const counter2 = await page.$(counter2Selector)
+        const counter3 = await page.$(counter3Selector)
+        let classValue = await counter1.getProperty('className')
+        expect(classValue._remoteObject.value).to.eq('styles-module--wrapper--1T4Kf styles-module--circleVisible--3ZBB8')
+        expect(((await (await page.$(counter2Selector)).getProperty('className')))._remoteObject.value).to.equal('styles-module--wrapper--1T4Kf')
+        expect(((await (await page.$(counter3Selector)).getProperty('className')))._remoteObject.value).to.equal('styles-module--wrapper--1T4Kf')
+        await page.waitForTimeout(5000)
+        classValue = await counter2.getProperty('className')
+        expect(classValue._remoteObject.value).to.equal('styles-module--wrapper--1T4Kf styles-module--circleVisible--3ZBB8')
+        expect(((await (await page.$(counter1Selector)).getProperty('className')))._remoteObject.value).to.equal('styles-module--wrapper--1T4Kf')
+        expect(((await (await page.$(counter3Selector)).getProperty('className')))._remoteObject.value).to.equal('styles-module--wrapper--1T4Kf')
+        await page.waitForTimeout(5000)
+        classValue = await counter3.getProperty('className')
+        expect(classValue._remoteObject.value).to.equal('styles-module--wrapper--1T4Kf styles-module--circleVisible--3ZBB8')
+        expect(((await (await page.$(counter1Selector)).getProperty('className')))._remoteObject.value).to.equal('styles-module--wrapper--1T4Kf')
+        expect(((await (await page.$(counter2Selector)).getProperty('className')))._remoteObject.value).to.equal('styles-module--wrapper--1T4Kf')
+        await page.waitForTimeout(5000)
+        classValue = await counter1.getProperty('className')
+        expect(classValue._remoteObject.value).to.eq('styles-module--wrapper--1T4Kf styles-module--circleVisible--3ZBB8')
+        expect(((await (await page.$(counter2Selector)).getProperty('className')))._remoteObject.value).to.equal('styles-module--wrapper--1T4Kf')
+        expect(((await (await page.$(counter3Selector)).getProperty('className')))._remoteObject.value).to.equal('styles-module--wrapper--1T4Kf')
+    }
+    async buttonLocation() {
+        const buttonBox = await(await page.$(buttonSelector)).boundingBox()
+        const subtitleBox = await(await page.$(subtitleSelector)).boundingBox()
+        const sectionBox = await(await page.$(sectionSelector)).boundingBox()
+        expect(buttonBox.x).to.be.greaterThan(sectionBox.x)
+        expect(buttonBox.y).to.be.greaterThan(sectionBox.y)
+        expect(buttonBox.x).to.be.greaterThan(subtitleBox.x)
+        expect(buttonBox.height).to.be.greaterThan(subtitleBox.height)
     }
 
 }

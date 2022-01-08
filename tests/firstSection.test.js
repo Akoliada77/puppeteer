@@ -36,5 +36,17 @@ describe ('Development solutions', () => {
         await mainpage.visit()
         await firstsection.subtitleChanging()
     })
+    it('Subtitle text changing', async () =>{
+        await mainpage.visit()
+        await firstsection.countersLocation()
+    })
+    it('Counters changing at certain intervals', async () =>{
+        await mainpage.visit()
+        await firstsection.countersChanging()
+    })
+    it('Button location', async () =>{
+        await mainpage.visit()
+        await firstsection.buttonLocation()
+    })
 
 })
