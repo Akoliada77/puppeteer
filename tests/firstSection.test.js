@@ -3,50 +3,50 @@ import FirstSection from '../elements/MainPage/FirstSection'
 
 describe ('Development solutions', () => {
     let mainpage 
-    let firstsection
+    let firstSection
    
     jest.setTimeout(40000)
 
     beforeAll(async() =>{
         mainpage = new MainPage()
-        firstsection = new FirstSection()
+        firstSection = new FirstSection()
     })
 
     it('First section is displayed', async () =>{
         await mainpage.visit()
-        await firstsection.isSectionDisplayed()
+        await firstSection.isSectionDisplayed()
     })
     it('First section location', async () =>{
         await mainpage.visit()
-        await firstsection.sectionLocation()
+        await firstSection.sectionLocation()
     })
     it('First section content', async () =>{
         await mainpage.visit()
-        await firstsection.sectionContent()
+        await firstSection.sectionContent()
     })
     it('Title location', async () =>{
         await mainpage.visit()
-        await firstsection.titleLocation()
+        await firstSection.titleLocation()
     })
     it('Subtitle location', async () =>{
         await mainpage.visit()
-        await firstsection.subtitleLocation()
+        await firstSection.subtitleLocation()
     })
     it('Subtitle text changing', async () =>{
         await mainpage.visit()
-        await firstsection.subtitleChanging()
+        await firstSection.subtitleChanging()
     })
     it('Subtitle text changing', async () =>{
         await mainpage.visit()
-        await firstsection.countersLocation()
+        await firstSection.countersLocation()
     })
     it('Counters changing at certain intervals', async () =>{
         await mainpage.visit()
-        await firstsection.countersChanging()
+        await firstSection.countersChanging()
     })
     it('Button location', async () =>{
         await mainpage.visit()
-        await firstsection.buttonLocation()
+        await firstSection.buttonLocation()
     })
 
 })

@@ -55,14 +55,14 @@ export default class Header {
           console.log(data)
     }
     async rorLinkRedirect(){
-        const rorLink = await page.$('.styles-module--linkRor--TEgXa.styles-module--link--ZNrzI')
+        const rorLinkSelector = '.styles-module--linkRor--TEgXa.styles-module--link--ZNrzI'
+        const rorLink = await page.$(rorLinkSelector)
         const href = await (await rorLink.getProperty('href')).jsonValue()
-        expect(href).to.equal('https://new.rubyroidlabs.dev/')
-        const rorLinkSelector2 = '#content > div > header > div > header > div.styles-module--navigation--2vh3P > div.styles-module--nav--2gL6i > div:nth-child(1) > a'
-        await click(page, rorLinkSelector2)
-        await page.waitForTimeout(2000)
-        // await page.waitForNavigation()
-        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/')
+        expect(href).to.equal('https://new.rubyroidlabs.dev/services/ror_development')
+        // await click(page, rorLink)
+        // await page.waitForTimeout(2000)
+        // // await page.waitForNavigation()
+        // expect(page.url()).to.equal('https://new.rubyroidlabs.dev/services/ror_development')
     }
     async contactLinkRedirect(){
         const contactLinkSelector = await page.$('.styles-module--link--1BKwL')

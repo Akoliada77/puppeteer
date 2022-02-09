@@ -15,7 +15,8 @@ export default class MainPage {
     async authorization() {
         await page.authenticate({ 
             username: creds["credentials.admin.login"] ,
-            password: creds["credentials.admin.password"]})
+            password: creds["credentials.admin.password"]
+        })
     } 
 
 }

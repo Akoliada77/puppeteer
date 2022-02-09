@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --forceExit --runInBand",
     "test:incognito": "INCOGNITO=true jest --runInBand",
-    "example": "jest --forceExit -i ./tests/example.test.js -t \"a\"",
+    "example": "jest --forceExit -i ./tests/example.test.js -t \"a\" --runInBand",
+    "header": "jest --forceExit -i ./tests/header.test.js -t \"a\" --runInBand",
     "report": "allure generate allure-results --clean -o allure-report && allure open allure-report",
     "report-clear": "allure generate --clean --output allure-results"
   },

@@ -7,7 +7,7 @@ let mainpage
 
 // variables for the section
 var sectionSelector = '.styles-module--container--FSAdL'
-var titleSelector = '.styles-module--title--iIWVh.styles-module--headline--38iHF'
+var titleSelector = '.styles-module--headline--38iHF'
 var subtitleSelector = '.styles-module--description--2S0yz.subtitle'
 var counterSelector = '.styles-module--countersDirection--OX9c4'
 var buttonSelector = '.styles-module--btnContainer--CRr_9'
