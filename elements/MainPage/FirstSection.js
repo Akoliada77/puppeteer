@@ -20,8 +20,7 @@ export default class FirstSection {
         expect(await isElementVisible(section)).to.be.true
     }
     async areDirectionCountersDisplayed() {
-        const counters = '.styles-module--countersDirection--OX9c4'
-        expect(await isElementVisible(counters)).to.be.true
+        expect(await isElementVisible(counterSelector)).to.be.true
     }
     async sectionLocation() {
         const headerSelector = '.styles-module--wrapper__header--18RcT'
