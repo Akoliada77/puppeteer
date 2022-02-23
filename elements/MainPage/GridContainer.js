@@ -15,6 +15,7 @@ var textBlockSelector = '.styles-module--blockTitleText--3N-Ze'
 var descriptionBlockSelector = '.styles-module--blockDescription--dTCz4'
 var serviceBlocksSelector = '.styles-module--customServiceBlock--3A8Hy'
 var circleButtonSelector = '.styles-module--largeCircleButton--1oaGQ.undefined.styles-module--size--1GVWm'
+var descriptionBlockSelector = '.styles-module--blockDescription--dTCz4'
 
 
 export default class GridContainer {
@@ -42,37 +43,27 @@ export default class GridContainer {
         expect(imageBox.y).to.be.lessThan(985)
     }
     async imageBlockHasImage() {
-        const imageSelector = '[alt="team image"]'
-        const src = await (await (await page.$(imageSelector)).getProperty('src')).jsonValue()
-        expect(src).to.include('team.png')
+        const imageSelector1 = '[alt="team image"]'
+        const src = await (await (await page.$(imageSelector1)).getProperty('src')).jsonValue()
+        expect(src).to.include('team-main.png')
     }
     async textBlockLocation() {
-        const textBlockSelector = '.styles-module--blockTitleText--3N-Ze'
-        const imageBlockSelector = '.gatsby-image-wrapper.styles-module--teamImage--pX2kk'
-        const imageBlockBox = await (await page.$(imageBlockSelector)).boundingBox()
+        const imageBlockBox = await (await page.$(imageSelector)).boundingBox()
         const textBlockBox = await (await page.$(textBlockSelector)).boundingBox()
         expect(textBlockBox.x+textBlockBox.width).to.be.lessThan(imageBlockBox.y)
     }
     async checkThatTextBlockHasText() {
-        const textBlockSelector = '.styles-module--blockTitleText--3N-Ze'    
-        const textSelector = '.styles-module--title--1CEMO'
-        const textBlockBox = await (await page.$(textBlockSelector)).boundingBox()
-        const textBox = await(await page.$(textSelector)).boundingBox()
-        expect(await getText(page, textSelector)).to.equal('Custom software development services')
-        expect(textBox.x).to.equal(textBlockBox.x)
-        expect(textBox.y).to.be.greaterThan(textBlockBox.y)
-        expect(textBlockBox.height).to.be.greaterThan(textBox.height)
+        expect(await getText(page, textBlockSelector)).to.include('Custom software development services')
     }
     async descritionBlockContent() {
-        const blockSelector = '.styles-module--blockDescription--dTCz4'
-        const imageSelector = '#content > div > div > section.styles-module--container--1XxoU > div.styles-module--gridContainer--3dAwj > div > div.styles-module--blockDescription--dTCz4 > svg'
-        const textSelector = '.styles-module--textCenter--2Xb_m '
-        expect(await isElementVisible(blockSelector)).to.be.true
-        expect(await isElementVisible(imageSelector)).to.be.true
-        expect(await isElementVisible(textSelector)).to.be.true
-        const blockBox = await(await page.$(blockSelector)).boundingBox()
-        const imageBox = await(await page.$(imageSelector)).boundingBox()
-        const textBox = await(await page.$(textSelector)).boundingBox()
+        const descriptionImageSelector = '#content > div > section.styles-module--container--1XxoU > div.styles-module--gridContainer--3dAwj > div > div.styles-module--blockDescription--dTCz4 > svg'
+        const descriptiontTextSelector = '.styles-module--textCenter--2Xb_m '
+        expect(await isElementVisible(descriptionBlockSelector)).to.be.true
+        expect(await isElementVisible(descriptionImageSelector)).to.be.true
+        expect(await isElementVisible(descriptiontTextSelector)).to.be.true
+        const blockBox = await(await page.$(descriptionBlockSelector)).boundingBox()
+        const imageBox = await(await page.$(descriptionImageSelector)).boundingBox()
+        const textBox = await(await page.$(descriptiontTextSelector)).boundingBox()
         expect(imageBox.x).to.be.greaterThan(blockBox.x)
         expect(imageBox.y).to.be.greaterThan(blockBox.y)
         expect(textBox.x).to.be.greaterThan(blockBox.x)
