@@ -17,6 +17,7 @@ var serviceBlocksSelector = '.styles-module--customServiceBlock--3A8Hy'
 var circleButtonSelector = '.styles-module--largeCircleButton--1oaGQ.undefined.styles-module--size--1GVWm'
 var descriptionBlockSelector = '.styles-module--blockDescription--dTCz4'
 var rorServiceBlockSelector = '.styles-module--link--3cfyl.styles-module--customService--2tD_P.styles-module--ror_development--2oCKz'
+var cwpServiceBlockSelector= '#customService-custom_web_development'
 
 export default class GridContainer {
     async isSectionDisplayed() {
@@ -141,7 +142,39 @@ export default class GridContainer {
         const descriptionXpath = '//*[@id="customService-ror_development"]/div[1]/div[3]/text()'
         expect(await getTextXpath(page, descriptionXpath)).to.equal('Launch, scale, and upgrade with our full-cycle Ruby and Ruby on Rails development services.') 
     }
-    async cwpServiceBlockLocation() {
+    async cwdServiceBlockLocation() {
+        const sectionBox = await (await page.$(sectionSelector)).boundingBox()
+        const cwpBlockBox = await (await page.$(cwpServiceBlockSelector)).boundingBox()
+        const rorBlockBox = await(await page.$(rorServiceBlockSelector)).boundingBox()
+        expect(cwpBlockBox.x).to.be.greaterThan(sectionBox.x)
+        expect(cwpBlockBox.y).to.be.greaterThan(sectionBox.y)
+        expect(cwpBlockBox.y).to.be.greaterThan(rorBlockBox.y)
+        expect(cwpBlockBox.x).to.be.greaterThan(430)
+    }
+    async cwdServiceBlockRedirect() {
+        const titleSelector = '#customService-custom_web_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--titleContainer--3ac2x > a'
+        const href = await (await (await page.$(titleSelector)).getProperty('href')).jsonValue()
+        expect(href).to.include('/services/custom_web_development')
+        // await click(page, cwpServiceBlockSelector)
+        // await page.waitForTimeout(2000)
+        // expect(page.url).to.equal('https://new.rubyroidlabs.dev/services/custom_web_development')
+    }
+    async cwdServiceBlockContent() {
+        const imageSelector = '#customService-custom_web_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--imageContainer--DYI3k'
+        const titleSelector = '#customService-custom_web_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--titleContainer--3ac2x'
+        const descriptionSelector = '#customService-custom_web_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--description--3ETEa'
+        expect(await isElementVisible (imageSelector)).to.be.true
+        expect(await isElementVisible(titleSelector)).to.be.true
+        expect(await isElementVisible(descriptionSelector)).to.be.true
+        // const sectionBox = await(await page.$(cwpServiceBlockSelector)).boundingBox()
+        // const imageBox = await(await page.$(imageSelector)).boundingBox()
+        // const titleBox = await(await page.$(titleSelector)).boundingBox()
+        // const descriptionBox = await(await page.$(descriptionSelector)).boundingBox()
+        // expect(imageBox.x).to.be.greaterThan(sectionBox.x)
+        // expect(imageBox.y).to.be.greaterThan(sectionBox.y)
+        // expect 
+    }
+    async imageInCwdBlockLocation() {
         
     }
 }   
