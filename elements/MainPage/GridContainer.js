@@ -16,7 +16,7 @@ var descriptionBlockSelector = '.styles-module--blockDescription--dTCz4'
 var serviceBlocksSelector = '.styles-module--customServiceBlock--3A8Hy'
 var circleButtonSelector = '.styles-module--largeCircleButton--1oaGQ.undefined.styles-module--size--1GVWm'
 var descriptionBlockSelector = '.styles-module--blockDescription--dTCz4'
-
+var rorServiceBlockSelector = '.styles-module--link--3cfyl.styles-module--customService--2tD_P.styles-module--ror_development--2oCKz'
 
 export default class GridContainer {
     async isSectionDisplayed() {
@@ -70,30 +70,23 @@ export default class GridContainer {
         expect(textBox.y).to.be.greaterThan(blockBox.y)
     }
     async descriptionBlockLocation() {
-        const descriptionBlockSelector = '.styles-module--blockDescription--dTCz4'
-        const imageBlockSelector = '.gatsby-image-wrapper.styles-module--teamImage--pX2kk'
-        const sectionSelector = '.styles-module--gridContainer--3dAwj'
         const descriptionBlockBox = await(await page.$(descriptionBlockSelector)).boundingBox()
-        const imageBlockBox = await(await page.$(imageBlockSelector)).boundingBox()
+        const imageBlockBox = await(await page.$(imageSelector)).boundingBox()
         const sectionBox = await(await page.$(sectionSelector)).boundingBox()
         expect(descriptionBlockBox.y).to.be.greaterThan(imageBlockBox.y)
         expect(descriptionBlockBox.x+descriptionBlockBox.width).to.be.lessThan(sectionBox.x+sectionBox.width)
         expect(descriptionBlockBox.y).to.be.greaterThan(1364)
     }
     async rorServiceBlockLocation() {
-        const rorServiceBlockSelector = '.styles-module--link--3cfyl.styles-module--customService--2tD_P.styles-module--ror_development--2oCKz'
-        const sectionSelector = '.styles-module--gridContainer--3dAwj'
-        const titleBlockSelector = '.styles-module--blockTitleText--3N-Ze'
         const rorServiceBlockBox = await(await page.$(rorServiceBlockSelector)).boundingBox()
         const sectionBox = await(await page.$(sectionSelector)).boundingBox()
-        const titleBlockBox = await(await page.$(titleBlockSelector)).boundingBox()
+        const titleBlockBox = await(await page.$(textBlockSelector)).boundingBox()
         expect(rorServiceBlockBox.x).to.be.greaterThan(sectionBox.x)
         expect(rorServiceBlockBox.x).to.be.lessThan(43)
         expect(rorServiceBlockBox.y).to.be.greaterThan(titleBlockBox.y)
         expect(rorServiceBlockBox.y).to.be.greaterThan(1442)
     }
     async rorSeviceBlockContent() {
-        const rorServiceBlockSelector = '.styles-module--link--3cfyl.styles-module--customService--2tD_P.styles-module--ror_development--2oCKz'
         const imageSelector = '#customService-ror_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--imageContainer--DYI3k'
         const imageLinkSelector = '#customService-ror_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--imageContainer--DYI3k > img'
         const titleSelector = '#customService-ror_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--titleContainer--3ac2x'
