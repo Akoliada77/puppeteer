@@ -80,5 +80,17 @@ describe ('Grid Container', () => {
         await mainpage.visit()
         await gridContainer.descriptionText()
     })
+    it('Cwd service block location', async () =>{
+        await mainpage.visit()
+        await gridContainer.cwdServiceBlockLocation()()
+    })
+    it('Cwd service block redirection', async () =>{
+        await mainpage.visit()
+        await gridContainer.cwdServiceBlockRedirect()
+    })
+    it('Cwd service block content', async () =>{
+        await mainpage.visit()
+        await gridContainer.cwdServiceBlockContent()
+    })
 
 })

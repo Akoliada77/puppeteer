@@ -166,6 +166,9 @@ export default class GridContainer {
         expect(await isElementVisible (imageSelector)).to.be.true
         expect(await isElementVisible(titleSelector)).to.be.true
         expect(await isElementVisible(descriptionSelector)).to.be.true
+       
+    }
+    async imageInCwdBlockLocation() {
         // const sectionBox = await(await page.$(cwpServiceBlockSelector)).boundingBox()
         // const imageBox = await(await page.$(imageSelector)).boundingBox()
         // const titleBox = await(await page.$(titleSelector)).boundingBox()
@@ -173,8 +176,5 @@ export default class GridContainer {
         // expect(imageBox.x).to.be.greaterThan(sectionBox.x)
         // expect(imageBox.y).to.be.greaterThan(sectionBox.y)
         // expect 
-    }
-    async imageInCwdBlockLocation() {
-        
     }
 }   
