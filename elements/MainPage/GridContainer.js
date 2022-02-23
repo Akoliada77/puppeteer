@@ -7,24 +7,26 @@ let mainpage
 
 mainpage = new Mainpage()
 
+// variables for the section
+var sectionSelector = '.styles-module--gridContainer--3dAwj'
+var customerLogosSelector = '.styles-module--customerLogos--1wUpb'
+var imageSelector = '.gatsby-image-wrapper.gatsby-image-wrapper-constrained.styles-module--teamImage--pX2kk'
+var textBlockSelector = '.styles-module--blockTitleText--3N-Ze'
+var descriptionBlockSelector = '.styles-module--blockDescription--dTCz4'
+var serviceBlocksSelector = '.styles-module--customServiceBlock--3A8Hy'
+var circleButtonSelector = '.styles-module--largeCircleButton--1oaGQ.undefined.styles-module--size--1GVWm'
+
+
 export default class GridContainer {
     async isSectionDisplayed() {
-        const sectionSelector = '.styles-module--gridContainer--3dAwj'
         expect(await isElementVisible(sectionSelector)).to.be.true
     }
     async sectionLocation() {
-        const sectionSelector = '.styles-module--gridContainer--3dAwj'
-        const customerLogosSelector = '.styles-module--customerLogos--1wUpb'
         const customerLogosBox = await(await page.$(customerLogosSelector)).boundingBox()
         const sectionBox = await(await page.$(sectionSelector)).boundingBox()
         expect(sectionBox.y).to.be.greaterThan(customerLogosBox.y)
     }
     async sectionContent() {
-        const imageSelector = '#content > div > div > section.styles-module--container--1XxoU > div.styles-module--gridContainer--3dAwj > div > div.gatsby-image-wrapper.styles-module--teamImage--pX2kk > picture > img'
-        const textBlockSelector = '.styles-module--blockTitleText--3N-Ze'
-        const descriptionBlockSelector = '.styles-module--blockDescription--dTCz4'
-        const serviceBlocksSelector = '.styles-module--customServiceBlock--3A8Hy'
-        const circleButtonSelector = '.styles-module--largeCircleButton--1oaGQ.undefined.styles-module--size--1GVWm'
         expect(await isElementVisible(imageSelector)).to.be.true
         expect(await isElementVisible(textBlockSelector)).to.be.true
         expect(await isElementVisible(descriptionBlockSelector)).to.be.true
@@ -32,14 +34,12 @@ export default class GridContainer {
         expect(await isElementVisible(circleButtonSelector)).to.be.true
     }
     async imageLocation() {
-        const imageSelector = '.gatsby-image-wrapper.styles-module--teamImage--pX2kk'
         const imageBox = await(await page.$(imageSelector)).boundingBox()
-        const sectionSelector = '.styles-module--gridContainer--3dAwj'
         const sectionBox = await(await page.$(sectionSelector)).boundingBox()
         expect(imageBox.x).to.be.greaterThan(sectionBox.x)
         expect(imageBox.x).to.be.greaterThan(430)
         expect(imageBox.y).to.be.greaterThan(sectionBox.y)
-        expect(imageBox.y).to.be.lessThan(980)
+        expect(imageBox.y).to.be.lessThan(985)
     }
     async imageBlockHasImage() {
         const imageSelector = '[alt="team image"]'
@@ -156,5 +156,8 @@ export default class GridContainer {
     async descriptionText() {
         const descriptionXpath = '//*[@id="customService-ror_development"]/div[1]/div[3]/text()'
         expect(await getTextXpath(page, descriptionXpath)).to.equal('Launch, scale, and upgrade with our full-cycle Ruby and Ruby on Rails development services.') 
+    }
+    async cwpServiceBlockLocation() {
+        
     }
 }   
