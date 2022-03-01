@@ -66,8 +66,13 @@ export default class DevelopmentSolutions {
     async amountOfPoints() {
         expect(await getCount(page, pointsSelector)).to.equal(3) 
     }
-    async scrollHorizontally() {
-        expect(await isElementVisible(circleButtonSelector)).to.be.true
+    async sliderScrollsHorizontally() {
+        // page.$eval('.styles-module--headline--3a34r', (el) => el.scrollIntoView())
+        page.$eval('#RRLinNumbers', (el) => el.scrollIntoView())
+        await page.waitForTimeout(1000)
+        const slider = await page.$('#content > div > section.styles-module--container--34pZy > div.scrollmagic-pin-spacer > div > div > div.styles-module--slideContainer--tea2U.slideContainer')
+        const href = await (await slider.getProperty('style')).jsonValue()
+        console.log(href)
 
     }
 
