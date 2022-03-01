@@ -92,5 +92,13 @@ describe ('Grid Container', () => {
         await mainpage.visit()
         await gridContainer.cwdServiceBlockContent()
     })
+    it('Image in Cwd service block location', async () =>{
+        await mainpage.visit()
+        await gridContainer.imageInCwdBlockLocation()
+    })
+    it('Title in Cwd service block location', async () =>{
+        await mainpage.visit()
+        await gridContainer.titleInCwdBlockLocation()
+    })
 
 })

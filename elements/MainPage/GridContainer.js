@@ -169,12 +169,22 @@ export default class GridContainer {
        
     }
     async imageInCwdBlockLocation() {
-        // const sectionBox = await(await page.$(cwpServiceBlockSelector)).boundingBox()
-        // const imageBox = await(await page.$(imageSelector)).boundingBox()
-        // const titleBox = await(await page.$(titleSelector)).boundingBox()
-        // const descriptionBox = await(await page.$(descriptionSelector)).boundingBox()
-        // expect(imageBox.x).to.be.greaterThan(sectionBox.x)
-        // expect(imageBox.y).to.be.greaterThan(sectionBox.y)
-        // expect 
+        const cwdImageSelector = '#customService-custom_web_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--imageContainer--DYI3k'
+        const cwdBlockBox = await (await page.$(cwpServiceBlockSelector)).boundingBox()
+        const imageBox = await(await page.$(cwdImageSelector)).boundingBox()
+        expect(imageBox.x).to.be.greaterThan(cwdBlockBox.x)
+        expect(imageBox.y).to.be.greaterThan(cwdBlockBox.y)
+        expect(imageBox.x).to.be.greaterThan(460)
+        expect(imageBox.y).to.be.greaterThan(1709)
+    }
+    async titleInCwdBlockLocation(){
+        const cwdTitleSelector = '#customService-custom_web_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--titleContainer--3ac2x'
+        const cwdImageSelector = '#customService-custom_web_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--imageContainer--DYI3k'
+        const cwdBlockBox = await (await page.$(cwpServiceBlockSelector)).boundingBox()
+        const imageBox = await(await page.$(cwdImageSelector)).boundingBox()
+        const titleBox = await (await page.$(cwdTitleSelector)).boundingBox()
+        expect(titleBox.x).to.be.greaterThan(cwdBlockBox.x)
+        expect(titleBox.y).to.be.greaterThan(cwdBlockBox.y)
+        expect(titleBox.y).to.be.greaterThan(imageBox.y)
     }
 }   
