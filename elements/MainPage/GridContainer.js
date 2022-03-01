@@ -191,5 +191,18 @@ export default class GridContainer {
         const cwdTitleSelector = '#customService-custom_web_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--titleContainer--3ac2x > a'
         expect(await getText(page, cwdTitleSelector)).to.be.equal('Custom web development')
     }
-    
+    async descriptionInCwdBlockText() {
+        const cwdDescriptionSelector = '#customService-custom_web_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--description--3ETEa'
+        expect(await getText(page, cwdDescriptionSelector)).to.be.equal('Take advantage of our expertise in Ruby on Rails, Node.js, React.js, AngularJS, and Vue.js to build a CRM, ERP, E-commerce or any other custom web application.')
+    }
+    async descriptionInCwdBlockLocation() {
+        const cwdTitleSelector = '#customService-custom_web_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--titleContainer--3ac2x'
+        const cwdDescriptionSelector = '#customService-custom_web_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--description--3ETEa'
+        const cwdBlockBox = await (await page.$(cwpServiceBlockSelector)).boundingBox()
+        const descriptionBox = await(await page.$(cwdDescriptionSelector)).boundingBox()
+        const titleBox = await (await page.$(cwdTitleSelector)).boundingBox()
+        expect(descriptionBox.x).to.be.greaterThan(cwdBlockBox.x)
+        expect(descriptionBox.y).to.be.greaterThan(cwdBlockBox.y)
+        expect(descriptionBox.y).to.be.greaterThan(titleBox.y)
+    }
 }   

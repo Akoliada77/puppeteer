@@ -104,6 +104,14 @@ describe ('Grid Container', () => {
         await mainpage.visit()
         await gridContainer.titleInCwdBlockText()
     })
-    
+    it('Description in Cwd service block location', async () =>{
+        await mainpage.visit()
+        await gridContainer.descriptionInCwdBlockLocation()
+    })
+    it('Description in Cwd service block location', async () =>{
+        await mainpage.visit()
+        await gridContainer.descriptionInCwdBlockText()
+    })
+
 
 })
