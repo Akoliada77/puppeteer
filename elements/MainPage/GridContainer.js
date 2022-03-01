@@ -187,4 +187,9 @@ export default class GridContainer {
         expect(titleBox.y).to.be.greaterThan(cwdBlockBox.y)
         expect(titleBox.y).to.be.greaterThan(imageBox.y)
     }
+    async titleInCwdBlockText() {
+        const cwdTitleSelector = '#customService-custom_web_development > div.styles-module--customServiceBlock--3A8Hy > div.styles-module--titleContainer--3ac2x > a'
+        expect(await getText(page, cwdTitleSelector)).to.be.equal('Custom web development')
+    }
+    
 }   

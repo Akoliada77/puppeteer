@@ -100,5 +100,10 @@ describe ('Grid Container', () => {
         await mainpage.visit()
         await gridContainer.titleInCwdBlockLocation()
     })
+    it('Title in Cwd service block text', async () =>{
+        await mainpage.visit()
+        await gridContainer.titleInCwdBlockText()
+    })
+    
 
 })
