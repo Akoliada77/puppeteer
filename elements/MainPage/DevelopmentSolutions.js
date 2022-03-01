@@ -14,6 +14,7 @@ var subtitleSelector = '#content > div > div > section.styles-module--container-
 var slideSelector = '.styles-module--slideWrapper--1e0Kl.slideWrapper'
 var circleButtonSelector = '.styles-module--largeCircleButton--1oaGQ.undefined.styles-module--size--2om9F'
 var pointsSelector = '.styles-module--imgBlock--nYMjz'
+var pointTitlesSelector = '.styles-module--sectionParagraph--2gmTf'
 
 export default class DevelopmentSolutions {
     async isSectionDisplayed() {
@@ -74,6 +75,12 @@ export default class DevelopmentSolutions {
         const href = await (await slider.getProperty('style')).jsonValue()
         console.log(href)
 
+    } 
+    async pointTitlesLocation() {
+        expect(await getCount(page, pointTitlesSelector)).to.equal(3)
+        const pointsBox = await (await page.$(pointsSelector)).boundingBox()
+        const pointTitlesBox = await(await page.$(pointTitlesSelector)).boundingBox()
+        expect(pointTitlesBox.y).to.be.greaterThan(pointsBox.y)
     }
 
 

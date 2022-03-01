@@ -44,5 +44,9 @@ describe ('Development solutions', () => {
         await mainpage.visit()
         await developmentsolutions.amountOfPoints()
     })
+    it('Point titles location', async () =>{
+        await mainpage.visit()
+        await developmentsolutions.pointTitlesLocation()
+    })
     
 })
