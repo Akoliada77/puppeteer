@@ -14,7 +14,8 @@ var subtitleSelector = '#content > div > div > section.styles-module--container-
 var slideSelector = '.styles-module--slideWrapper--1e0Kl.slideWrapper'
 var circleButtonSelector = '.styles-module--largeCircleButton--1oaGQ.undefined.styles-module--size--2om9F'
 var pointsSelector = '.styles-module--imgBlock--nYMjz'
-var pointTitlesSelector = '.styles-module--sectionParagraph--2gmTf'
+var pointTitlesSelector = '#content > div > section.styles-module--container--34pZy > div.scrollmagic-pin-spacer > div > div > div.styles-module--slideContainer--tea2U.slideContainer > div h3'
+var pointDescriptionsSelector = '.styles-module--sectionParagraph--2gmTf'
 
 export default class DevelopmentSolutions {
     async isSectionDisplayed() {
@@ -81,6 +82,12 @@ export default class DevelopmentSolutions {
         const pointsBox = await (await page.$(pointsSelector)).boundingBox()
         const pointTitlesBox = await(await page.$(pointTitlesSelector)).boundingBox()
         expect(pointTitlesBox.y).to.be.greaterThan(pointsBox.y)
+    }
+    async pointDescriptionsLocation() { 
+        expect(await getCount(page, pointTitlesSelector)).to.equal(3)
+        const descriptionsBox = await (await page.$(pointDescriptionsSelector)).boundingBox()
+        const pointTitlesBox = await(await page.$(pointTitlesSelector)).boundingBox()
+        expect(descriptionsBox.y).to.be.greaterThan(pointTitlesBox.y)
     }
 
 
