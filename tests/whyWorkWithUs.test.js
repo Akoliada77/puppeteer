@@ -1,7 +1,7 @@
 import MainPage from '../pages/MainPage'
 import WhyWorkWithUs from '../elements/MainPage/WhyWorkWithUs'
 
-describe ('header', () => {
+describe ('Why work with us section', () => {
     let mainpage 
     let whyworkwithus
    

@@ -16,4 +16,10 @@ export default class WhyWorkWithUs {
     async isSectionDisplayed() {
         expect(await isElementVisible(sectionSelector)).to.be.true
     }
+    async sectionlocation() {
+        const sectionBox = await(await page.$(sectionSelector)).boundingBox()
+        const devSolutionsSelector = '.styles-module--container--34pZy'
+        const devSolutionsBox = await(await page.$(devSolutionsSelector)).boundingBox() 
+        expect(sectionBox.y).to.be.greaterThan(devSolutionsBox.y)
+    }
 }
