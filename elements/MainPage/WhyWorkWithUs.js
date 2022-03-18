@@ -31,5 +31,7 @@ export default class WhyWorkWithUs {
         const devSolutionsBox = await(await page.$(devSolutionsSelector)).boundingBox() 
         expect(sectionBox.y).to.be.greaterThan(devSolutionsBox.y)
     }
-    
+    async sectionContent() {
+        expect(await isElementVisible(titleSelector)).to.be.true
+    }
 }

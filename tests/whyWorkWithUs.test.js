@@ -16,4 +16,13 @@ describe ('Why work with us section', () => {
         await mainpage.visit()
         await whyworkwithus.isSectionDisplayed()
     })
+    it('Section location', async () =>{
+        await mainpage.visit()
+        await whyworkwithus.sectionlocation()
+    })
+    it('Section content', async () =>{
+        await mainpage.visit()
+        await whyworkwithus.sectionContent()
+    })
+    
 })
