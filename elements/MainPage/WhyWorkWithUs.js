@@ -55,4 +55,14 @@ export default class WhyWorkWithUs {
     async titleText() {
         expect(await getText(page, titleSelector)).to.include('Why work with us') 
     }
+    async subtitleLocation() {
+        const subtitleBox = await (await page.$(subtitleSelector)).boundingBox()
+        const sectionBox = await(await page.$(sectionSelector)).boundingBox()
+        const titleBox = await (await page.$(titleSelector)).boundingBox()
+        expect (subtitleBox.x).to.be.greaterThan(sectionBox.x)
+        expect (subtitleBox.y).to.be.greaterThan(sectionBox.y)
+        expect(subtitleBox.y).to.be.greaterThan(titleBox.y)
+        expect(subtitleBox.x).to.be.greaterThan(titleBox.x)
+        expect(subtitleBox.x).to.be.greaterThan(420)
+    }
 }
