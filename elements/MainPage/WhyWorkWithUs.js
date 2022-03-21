@@ -52,4 +52,7 @@ export default class WhyWorkWithUs {
         expect(titleBox.y).to.be.greaterThan(7485)
         expect(titleBox.x).to.be.lessThan(45)
     }
+    async titleText() {
+        expect(await getText(page, titleSelector)).to.include('Why work with us') 
+    }
 }

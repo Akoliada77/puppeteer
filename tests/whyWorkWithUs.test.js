@@ -28,4 +28,8 @@ describe ('Why work with us section', () => {
         await mainpage.visit()
         await whyworkwithus.titleLocation()
     })
+    it('Title text', async () =>{
+        await mainpage.visit()
+        await whyworkwithus.titleText()
+    })
 })
