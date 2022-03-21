@@ -19,7 +19,7 @@ var fourthImageSelector = '.styles-module--whyWork4--17Sb9'
 var fifthImageSelector = '.styles-module--whyWork5--pfbbH'
 var sixthImageSelector = '.styles-module--whyWork6--1eqp-'
 var seventhImageSelector = '.styles-module--whyWork7--MuQhS'
-var eighthImageSelevtor = '.styles-module--whyWork8--TTfu0'
+var eighthImageSelector = '.styles-module--whyWork8--TTfu0'
 
 export default class WhyWorkWithUs {
     async isSectionDisplayed() {
@@ -33,5 +33,16 @@ export default class WhyWorkWithUs {
     }
     async sectionContent() {
         expect(await isElementVisible(titleSelector)).to.be.true
+        expect(await isElementVisible(subtitleSelector)).to.be.true
+        expect(await isElementVisible(moduleBlockSelector)).to.be.true
+        expect(await isElementVisible(firstImageSelector)).to.be.true
+        expect(await isElementVisible(secondImageSelector)).to.be.true
+        expect(await isElementVisible(thirdImageSelector)).to.be.true
+        expect(await isElementVisible(fourthImageSelector)).to.be.true
+        expect(await isElementVisible(fifthImageSelector)).to.be.true
+        expect(await isElementVisible(sixthImageSelector)).to.be.true
+        expect(await isElementVisible(seventhImageSelector)).to.be.true
+        expect(await isElementVisible(eighthImageSelector)).to.be.true
+
     }
 }
