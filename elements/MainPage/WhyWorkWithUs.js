@@ -43,6 +43,13 @@ export default class WhyWorkWithUs {
         expect(await isElementVisible(sixthImageSelector)).to.be.true
         expect(await isElementVisible(seventhImageSelector)).to.be.true
         expect(await isElementVisible(eighthImageSelector)).to.be.true
-
+    }
+    async titleLocation() {
+        const titleBox = await (await page.$(titleSelector)).boundingBox()
+        const sectionBox = await (await page.$(sectionSelector)).boundingBox()
+        expect(titleBox.x).to.be.greaterThan(sectionBox.x)
+        expect(titleBox.y).to.be.greaterThan(sectionBox.y)
+        expect(titleBox.y).to.be.greaterThan(7485)
+        expect(titleBox.x).to.be.lessThan(45)
     }
 }
