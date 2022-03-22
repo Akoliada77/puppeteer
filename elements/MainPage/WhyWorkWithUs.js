@@ -11,6 +11,7 @@ mainpage = new Mainpage()
 var sectionSelector = '.styles-module--gridContainer--Zn72u.whyWorkWithUs__gridBlock_height '
 var titleSelector = '.styles-module--headline--HXENq'
 var subtitleSelector = '#content > div > section:nth-child(4) > div.scrollmagic-pin-spacer > div > div > div.styles-module--description--3KUT5 > p'
+var subtitleXpath = '//*[@id="content"]/div/section[4]/div[2]/div/div/div[2]/p/text()'
 var moduleBlockSelector = '.undefined.styles-module--whyWorkWithUsBlock--3GNfC  '
 var firstImageSelector = '.styles-module--whyWork1--2SW3q'
 var secondImageSelector = '.styles-module--whyWork2--kQmgo'
@@ -67,5 +68,17 @@ export default class WhyWorkWithUs {
     }
     async subtitleText() {
         expect(await getText(page, subtitleSelector)).to.eq('There are many custom software development companies out there vying for your attention. We stand out from the crowd by being:')
+    }
+    async imagesLocation() {
+        
+    }
+    async moduleBlockLocation() {
+        const moduleBlockBox = await (await page.$(moduleBlockSelector)).boundingBox()
+        const subtitleBox = await (await page.$(subtitleSelector)).boundingBox()
+        const sectionBox = await(await page.$(sectionSelector)).boundingBox()
+        expect(moduleBlockBox.y).to.be.greaterThan(subtitleBox.y)
+        expect(moduleBlockBox.x).to.be.greaterThan(sectionBox.x)
+        expect(moduleBlockBox.y).to.be.greaterThan(sectionBox.y)
+        expect(moduleBlockBox.x).to.be.greaterThan(115)
     }
 }
