@@ -65,4 +65,7 @@ export default class WhyWorkWithUs {
         expect(subtitleBox.x).to.be.greaterThan(titleBox.x)
         expect(subtitleBox.x).to.be.greaterThan(420)
     }
+    async subtitleText() {
+        expect(await getText(page, subtitleSelector)).to.eq('There are many custom software development companies out there vying for your attention. We stand out from the crowd by being:')
+    }
 }

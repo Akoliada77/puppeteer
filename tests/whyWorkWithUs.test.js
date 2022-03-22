@@ -36,4 +36,8 @@ describe ('Why work with us section', () => {
         await mainpage.visit()
         await whyworkwithus.subtitleLocation()
     })
+    it('Subtitle text', async () =>{
+        await mainpage.visit()
+        await whyworkwithus.subtitleText()
+    })
 })
