@@ -89,4 +89,11 @@ export default class WhyWorkWithUs {
         expect(await isElementVisible(moduleTitleSelector)).to.be.true
         expect(await isElementVisible(moduleSubtitleSelector)).to.be.true
     }
+    async countersLocation(){
+        const countersBox = await(await page.$(moduleCountersSelector)).boundingBox()
+        const moduleBlockBox = await(await page.$(moduleBlockSelector)).boundingBox()
+        expect(countersBox.x).to.be.greaterThan(moduleBlockBox.x)
+        expect(countersBox.y).to.be.greaterThan(moduleBlockBox.y)
+        expect(countersBox.y).to.be.greaterThan(8130)
+    }
 }

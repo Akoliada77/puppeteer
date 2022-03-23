@@ -48,4 +48,8 @@ describe ('Why work with us section', () => {
         await mainpage.visit()
         await whyworkwithus.moduleBlockContent()
     })
+    it('Counters in module block location', async () =>{
+        await mainpage.visit()
+        await whyworkwithus.countersLocation()
+    })
 })
