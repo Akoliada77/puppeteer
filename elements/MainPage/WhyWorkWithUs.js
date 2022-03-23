@@ -21,6 +21,9 @@ var fifthImageSelector = '.styles-module--whyWork5--pfbbH'
 var sixthImageSelector = '.styles-module--whyWork6--1eqp-'
 var seventhImageSelector = '.styles-module--whyWork7--MuQhS'
 var eighthImageSelector = '.styles-module--whyWork8--TTfu0'
+var moduleCountersSelector = '.styles-module--counter--wHeXW'
+var moduleTitleSelector = '#content > div > section:nth-child(4) > div.scrollmagic-pin-spacer > div > div > div.undefined.styles-module--whyWorkWithUsBlock--3GNfC > div.styles-module--textBlock--1E3Pa > div:nth-child(1) > div.styles-module--titleText--2YILZ'
+var moduleSubtitleSelector = '#content > div > section:nth-child(4) > div.scrollmagic-pin-spacer > div > div > div.undefined.styles-module--whyWorkWithUsBlock--3GNfC > div.styles-module--textBlock--1E3Pa > div:nth-child(1) > div.styles-module--descriptionText--3H1oi'
 
 export default class WhyWorkWithUs {
     async isSectionDisplayed() {
@@ -80,5 +83,10 @@ export default class WhyWorkWithUs {
         expect(moduleBlockBox.x).to.be.greaterThan(sectionBox.x)
         expect(moduleBlockBox.y).to.be.greaterThan(sectionBox.y)
         expect(moduleBlockBox.x).to.be.greaterThan(115)
+    }
+    async moduleBlockContent() {
+        expect(await isElementVisible(moduleCountersSelector)).to.be.true
+        expect(await isElementVisible(moduleTitleSelector)).to.be.true
+        expect(await isElementVisible(moduleSubtitleSelector)).to.be.true
     }
 }
