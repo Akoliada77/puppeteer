@@ -52,4 +52,8 @@ describe ('Why work with us section', () => {
         await mainpage.visit()
         await whyworkwithus.countersLocation()
     })
+    it('Title in module block location', async () =>{
+        await mainpage.visit()
+        await whyworkwithus.moduleTitleLocation()
+    })
 })

@@ -96,4 +96,12 @@ export default class WhyWorkWithUs {
         expect(countersBox.y).to.be.greaterThan(moduleBlockBox.y)
         expect(countersBox.y).to.be.greaterThan(8130)
     }
+    async moduleTitleLocation(){
+        const moduleTitleBox = await(await page.$(moduleTitleSelector)).boundingBox()
+        const moduleBlockBox = await(await page.$(moduleBlockSelector)).boundingBox()
+        const countersBox = await(await page.$(moduleCountersSelector)).boundingBox()
+        expect(moduleTitleBox.x).to.be.greaterThan(moduleBlockBox.x)
+        expect(moduleTitleBox.y).to.be.greaterThan(moduleBlockBox.y)
+        expect(moduleTitleBox.y).to.be.greaterThan(countersBox.y)
+    }
 }
