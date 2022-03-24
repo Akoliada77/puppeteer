@@ -111,6 +111,12 @@ export default class WhyWorkWithUs {
         expect(moduleSubtitleBox.x).to.be.greaterThan(moduleBlockBox.x)
         expect(moduleSubtitleBox.y).to.be.greaterThan(moduleBlockBox.y)
         expect(moduleSubtitleBox.y).to.be.greaterThan(countersBox.y)
-
+    }
+    async countersChanging() {
+        const countersSelector = '.styles-module--circle--Oxsfi'
+        // let counter = await page.$(countersSelector)[1]
+        let counter = await page.$('#content > div > section:nth-child(4) > div.scrollmagic-pin-spacer > div > div > div.undefined.styles-module--whyWorkWithUsBlock--3GNfC > div.styles-module--counterDirection--3WlxP > div:nth-child(1) > svg > circle')
+        let styleValue = await counter.getProperty('style')
+        console.log(styleValue)
     }
 }
