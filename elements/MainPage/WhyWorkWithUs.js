@@ -104,4 +104,13 @@ export default class WhyWorkWithUs {
         expect(moduleTitleBox.y).to.be.greaterThan(moduleBlockBox.y)
         expect(moduleTitleBox.y).to.be.greaterThan(countersBox.y)
     }
+    async moduleSubtitleLocation() {
+        const moduleBlockBox = await(await page.$(moduleBlockSelector)).boundingBox()
+        const countersBox = await(await page.$(moduleCountersSelector)).boundingBox()
+        const moduleSubtitleBox = await(await page.$(moduleSubtitleSelector)).boundingBox()
+        expect(moduleSubtitleBox.x).to.be.greaterThan(moduleBlockBox.x)
+        expect(moduleSubtitleBox.y).to.be.greaterThan(moduleBlockBox.y)
+        expect(moduleSubtitleBox.y).to.be.greaterThan(countersBox.y)
+
+    }
 }
