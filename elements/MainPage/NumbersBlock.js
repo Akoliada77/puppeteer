@@ -26,5 +26,10 @@ export default class NumbersBlock {
         let backgroundColour = await page.$eval(sectionSelector, el => getComputedStyle(el).getPropertyValue('background-color'))
         expect(backgroundColour).to.equal('rgb(0, 217, 110)')
     }
+    async sectionRedirection() {
+        await click(page, sectionSelector)
+        expect(await isElementVisible('.styles-module--image--39yWQ.gbi-1666633869-woJHbfYnZ73uYur8XFVBVy')).to.be.true
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/services')
+    }
 
 }

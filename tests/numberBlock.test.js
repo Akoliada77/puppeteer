@@ -23,4 +23,8 @@ describe ('Why work with us section', () => {
         await mainpage.visit()
         await numbersBlock.sectionBackgroundColour()
     })
+    it('Section redirection', async() =>{
+        await mainpage.visit()
+        await numbersBlock.sectionRedirection()
+    })
 })
