@@ -19,4 +19,8 @@ describe ('Why work with us section', () => {
         await mainpage.visit()
         await numbersBlock.sectionContent()
     })
+    it('Section background colour', async() =>{
+        await mainpage.visit()
+        await numbersBlock.sectionBackgroundColour()
+    })
 })

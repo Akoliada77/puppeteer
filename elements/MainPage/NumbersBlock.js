@@ -21,4 +21,10 @@ export default class NumbersBlock {
         expect(await isElementVisible(titleSelector)).to.be.true
         expect(await isElementVisible(infoBlockSelector)).to.be.true
     }
+    async sectionBackgroundColour() {
+        const section = await page.$(sectionSelector)
+        let backgroundColour = await page.$eval(sectionSelector, el => getComputedStyle(el).getPropertyValue('background-color'))
+        expect(backgroundColour).to.equal('rgb(0, 217, 110)')
+    }
+
 }
