@@ -9,9 +9,16 @@ mainpage = new Mainpage()
 
 // variables for the section
 var sectionSelector = '#RRLinNumbers'
+var titleSelector = '#RRLinNumbers > div > a'
+var infoBlockSelector = '.styles-module--containerInfo--2MYWH'
+
 
 export default class NumbersBlock {
     async isSectionDisplayed() {
         expect(await isElementVisible(sectionSelector)).to.be.true
+    }
+    async sectionContent() {
+        expect(await isElementVisible(titleSelector)).to.be.true
+        expect(await isElementVisible(infoBlockSelector)).to.be.true
     }
 }

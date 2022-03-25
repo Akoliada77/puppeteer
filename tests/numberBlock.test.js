@@ -15,4 +15,8 @@ describe ('Why work with us section', () => {
         await mainpage.visit()
         await numbersBlock.isSectionDisplayed()
     })
+    it('Section content', async() =>{
+        await mainpage.visit()
+        await numbersBlock.sectionContent()
+    })
 })
