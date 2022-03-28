@@ -31,5 +31,12 @@ export default class NumbersBlock {
         expect(await isElementVisible('.styles-module--image--39yWQ.gbi-1666633869-woJHbfYnZ73uYur8XFVBVy')).to.be.true
         expect(page.url()).to.equal('https://new.rubyroidlabs.dev/services')
     }
-
+    async titleLocation() {
+        const titleBox = await(await page.$(titleSelector)).boundingBox()
+        const sectionBox = await(await page.$(sectionSelector)).boundingBox()
+        expect(titleBox.x).to.be.greaterThan(sectionBox.x)
+        expect(titleBox.y).to.be.greaterThan(sectionBox.y)
+        expect(titleBox.x).to.be.lessThan(45)
+        expect(titleBox.y).to.be.greaterThan(13578)
+    }
 }

@@ -27,4 +27,8 @@ describe ('Why work with us section', () => {
         await mainpage.visit()
         await numbersBlock.sectionRedirection()
     })
+    it('Title location', async() =>{
+        await mainpage.visit()
+        await numbersBlock.titleLocation()
+    })
 })
