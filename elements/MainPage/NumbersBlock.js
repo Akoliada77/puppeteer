@@ -43,4 +43,14 @@ export default class NumbersBlock {
         const text = await getText(page, titleSelector)
         expect(text).to.eq('Rubyroid Labs in numbers')
     }
+    async infoBlockLocation() {
+        const infoBlockBox = await(await page.$(infoBlockSelector)).boundingBox()
+        const titleBox = await(await page.$(titleSelector)).boundingBox()
+        const sectionBox = await(await page.$(sectionSelector)).boundingBox()
+        expect(infoBlockBox.x).to.be.greaterThan(sectionBox.x)
+        expect(infoBlockBox.y).to.be.greaterThan(sectionBox.y)
+        expect(infoBlockBox.y).to.be.greaterThan(titleBox.y)
+        expect(infoBlockBox.x).to.be.greaterThan(43)
+        expect(infoBlockBox.x+infoBlockBox.width).to.be.lessThan(757)
+    }
 }

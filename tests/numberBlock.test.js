@@ -35,4 +35,8 @@ describe ('Why work with us section', () => {
         await mainpage.visit()
         await numbersBlock.titleText()
     })
+    it('Info block location', async() =>{
+        await mainpage.visit()
+        await numbersBlock.infoBlockLocation()
+    })
 })
