@@ -11,6 +11,8 @@ mainpage = new Mainpage()
 var sectionSelector = '#RRLinNumbers'
 var titleSelector = '#RRLinNumbers > div > a'
 var infoBlockSelector = '.styles-module--containerInfo--2MYWH'
+var leftEntries = '.styles-module--number--3s3Mz.h2'
+var rightEntries = '.styles-module--text--12fMj.styles-module--fontStyle--3jBt6'
 
 
 export default class NumbersBlock {
@@ -52,5 +54,9 @@ export default class NumbersBlock {
         expect(infoBlockBox.y).to.be.greaterThan(titleBox.y)
         expect(infoBlockBox.x).to.be.greaterThan(43)
         expect(infoBlockBox.x+infoBlockBox.width).to.be.lessThan(757)
+    }
+    async infoBlockContent() {
+        expect(await getCount(page, leftEntries)).to.eq(4)
+        expect(await getCount(page, rightEntries)).to.eq(4)
     }
 }

@@ -39,4 +39,8 @@ describe ('Why work with us section', () => {
         await mainpage.visit()
         await numbersBlock.infoBlockLocation()
     })
+    it('Info block has 4 entries', async() =>{
+        await mainpage.visit()
+        await numbersBlock.infoBlockContent()
+    })
 })
