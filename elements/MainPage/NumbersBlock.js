@@ -39,4 +39,8 @@ export default class NumbersBlock {
         expect(titleBox.x).to.be.lessThan(45)
         expect(titleBox.y).to.be.greaterThan(13578)
     }
+    async titleText() {
+        const text = await getText(page, titleSelector)
+        expect(text).to.eq('Rubyroid Labs in numbers')
+    }
 }
