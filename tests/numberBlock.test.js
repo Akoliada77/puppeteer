@@ -43,4 +43,12 @@ describe ('Why work with us section', () => {
         await mainpage.visit()
         await numbersBlock.infoBlockContent()
     })
+    it('Entrie titles content', async() =>{
+        await mainpage.visit()
+        await numbersBlock.entriesTitleContent()
+    })
+    it('Entrie texts content', async() =>{
+        await mainpage.visit()
+        await numbersBlock.entriesTextsContent()
+    })
 })

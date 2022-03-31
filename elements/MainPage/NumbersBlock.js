@@ -11,8 +11,8 @@ mainpage = new Mainpage()
 var sectionSelector = '#RRLinNumbers'
 var titleSelector = '#RRLinNumbers > div > a'
 var infoBlockSelector = '.styles-module--containerInfo--2MYWH'
-var leftEntries = '.styles-module--number--3s3Mz.h2'
-var rightEntries = '.styles-module--text--12fMj.styles-module--fontStyle--3jBt6'
+var entrieTitles = '.styles-module--number--3s3Mz.h2'
+var entrieTexts = '.styles-module--text--12fMj.styles-module--fontStyle--3jBt6'
 
 
 export default class NumbersBlock {
@@ -56,7 +56,21 @@ export default class NumbersBlock {
         expect(infoBlockBox.x+infoBlockBox.width).to.be.lessThan(757)
     }
     async infoBlockContent() {
-        expect(await getCount(page, leftEntries)).to.eq(4)
-        expect(await getCount(page, rightEntries)).to.eq(4)
+        expect(await getCount(page, entrieTitles)).to.eq(4)
+        expect(await getCount(page, entrieTexts)).to.eq(4)
+    }
+    async entriesTitleContent() {
+        const entrieTitleList = await page.$$(entrieTitles)
+        const firstText = await (await entrieTitleList[0].getProperty('innerText')).jsonValue()
+        expect(firstText).to.eq('$200k +')
+        const secondtText = await (await entrieTitleList[1].getProperty('innerText')).jsonValue()
+        expect(secondtText).to.eq('73.58')
+        const thirdText = await (await entrieTitleList[2].getProperty('innerText')).jsonValue()
+        expect(thirdText).to.eq('2-4 years')
+        const fourthText = await (await entrieTitleList[3].getProperty('innerText')).jsonValue()
+        expect(fourthText).to.eq('$500m +')
+    }
+    async entriesTextsContent() {
+        
     }
 }
