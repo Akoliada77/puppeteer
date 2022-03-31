@@ -71,6 +71,14 @@ export default class NumbersBlock {
         expect(fourthText).to.eq('$500m +')
     }
     async entriesTextsContent() {
-        
+        const entrieTextsList = await page.$$(entrieTexts)
+        const firstText = await (await entrieTextsList[0].getProperty('innerText')).jsonValue()
+        expect(firstText).to.eq('our clients typically save per year')
+        const secondText = await (await entrieTextsList[1].getProperty('innerText')).jsonValue()
+        expect(secondText).to.eq('Net Promoter Score (NPS)')
+        const thirdText = await (await entrieTextsList[2].getProperty('innerText')).jsonValue()
+        expect(thirdText).to.eq('each of our developers stays on the same project (on average)')
+        const fourthText = await (await entrieTextsList[3].getProperty('innerText')).jsonValue()
+        expect(fourthText).to.eq('our startup clients have raised in funds')
     }
 }
