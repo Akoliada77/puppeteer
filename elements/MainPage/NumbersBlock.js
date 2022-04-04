@@ -81,4 +81,9 @@ export default class NumbersBlock {
         const fourthText = await (await entrieTextsList[3].getProperty('innerText')).jsonValue()
         expect(fourthText).to.eq('our startup clients have raised in funds')
     }
+    async entrieTitlesAreBold() {
+        const entriTitles = await page.$$(entrieTitles)
+        let fontsize = await page.$eval(entrieTitles, el => getComputedStyle(el).getPropertyValue('font-size'))
+        expect(fontsize).to.eq('50px')
+    }
 }

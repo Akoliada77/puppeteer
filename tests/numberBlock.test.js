@@ -51,4 +51,8 @@ describe ('Why work with us section', () => {
         await mainpage.visit()
         await numbersBlock.entriesTextsContent()
     })
+    it('Entrie titles are bold', async() =>{
+        await mainpage.visit()
+        await numbersBlock.entrieTitlesAreBold()
+    })
 })
