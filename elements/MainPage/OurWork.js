@@ -11,6 +11,7 @@ mainpage = new Mainpage()
 var titleSelector = '.styles-module--blockTitle--3nNCu'
 var casesBlockSelector = '.styles-module--workCases--33hkU.workCase_wrap '
 var viewAllCasesSelector = '.styles-module--viewAllCases--38uTf'
+var casesSelector = '.styles-module--workCaseCard--1BsUh.workCaseCard__visible'
 
 export default class OurWork {
     async isSectionDisplayed() {
@@ -41,6 +42,9 @@ export default class OurWork {
         expect(casesBox.y).to.equal(14468.0625)
         expect(titleBox.width).to.equal(800)
         // console.log(buttonBox)
+    }
+    async amountOfCases() {
+        expect(await getCount(page, casesSelector)).to.equal(7)
     }
 
 }

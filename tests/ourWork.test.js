@@ -23,4 +23,8 @@ describe ('Why work with us section', () => {
         await mainpage.visit()
         await ourWork.sectionContent()
     })
+    it('Check amount of cases', async() =>{
+        await mainpage.visit()
+        await ourWork.amountOfCases()
+    })
 })
