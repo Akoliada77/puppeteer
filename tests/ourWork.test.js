@@ -19,4 +19,8 @@ describe ('Why work with us section', () => {
         await mainpage.visit()
         await ourWork.sectionLocation()
     })
+    it('Section content', async() =>{
+        await mainpage.visit()
+        await ourWork.sectionContent()
+    })
 })
