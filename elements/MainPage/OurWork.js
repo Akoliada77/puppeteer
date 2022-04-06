@@ -46,5 +46,18 @@ export default class OurWork {
     async amountOfCases() {
         expect(await getCount(page, casesSelector)).to.equal(7)
     }
+    async casesAreLocatedHorrizontally() {
+        const firstCaseBox = await(await page.$('#caseCard-0')).boundingBox()
+        const secondCaseBox = await(await page.$('#caseCard-1')).boundingBox()
+        const thirdCaseBox = await(await page.$('#caseCard-2')).boundingBox()
+        const fourthCaseBox = await(await page.$('#caseCard-3')).boundingBox()
+        const fifthCaseBox = await(await page.$('#caseCard-4')).boundingBox()
+        const sixthCaseBox = await(await page.$('#caseCard-5')).boundingBox()
+        const seventhCaseBox = await(await page.$('#caseCard-6')).boundingBox()
+        expect(firstCaseBox.x).to.equal(40)
+        expect(firstCaseBox.x).to.lessThan(secondCaseBox.x)
+        expect(secondCaseBox.x).to.lessThan(thirdCaseBox.x)
+        expect(thirdCaseBox.x).to.lessThan(fourthCaseBox.x)
+    }
 
 }
