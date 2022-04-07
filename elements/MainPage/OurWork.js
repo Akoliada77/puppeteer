@@ -12,6 +12,11 @@ var titleSelector = '.styles-module--blockTitle--3nNCu'
 var casesBlockSelector = '.styles-module--workCases--33hkU.workCase_wrap '
 var viewAllCasesSelector = '.styles-module--viewAllCases--38uTf'
 var casesSelector = '.styles-module--workCaseCard--1BsUh.workCaseCard__visible'
+var caseCategoryTitlesSelector = '.styles-module--categoryTitle--1Vkc9.workCaseCard__visible_title'
+var caseImagesSelector = '.styles-module--imageContainer--13Uvg'
+var caseTitlesSelector = '.styles-module--caseTitle--EV173.h5'
+var caseDescriptionsSelector = '.styles-module--caseDescription--3TMMa'
+var caseRecordsSelector = '.styles-module--recordDescription--1bpaj'
 
 export default class OurWork {
     async isSectionDisplayed() {
@@ -58,6 +63,14 @@ export default class OurWork {
         expect(firstCaseBox.x).to.lessThan(secondCaseBox.x)
         expect(secondCaseBox.x).to.lessThan(thirdCaseBox.x)
         expect(thirdCaseBox.x).to.lessThan(fourthCaseBox.x)
+    }
+    async casesContent() {
+        expect(await getCount(page, caseCategoryTitlesSelector)).to.equal(7)
+        expect(await getCount(page, caseImagesSelector)).to.equal(7)
+        expect(await getCount(page, caseTitlesSelector)).to.equal(7)
+        expect(await getCount(page, caseDescriptionsSelector)).to.equal(7)
+        expect(await getCount(page, caseRecordsSelector)).to.equal(11)
+
     }
 
 }
