@@ -10,7 +10,7 @@ mainpage = new Mainpage()
 // variables for the section
 var titleSelector = '.styles-module--blockTitle--3nNCu'
 var casesBlockSelector = '.styles-module--workCases--33hkU.workCase_wrap '
-var viewAllCasesSelector = '.styles-module--viewAllCases--38uTf'
+var viewAllCasesSelector = '#content > div > section:nth-child(6) > div.styles-module--viewAllCases--38uTf > a'
 var casesSelector = '.styles-module--workCaseCard--1BsUh.workCaseCard__visible'
 var caseCategoryTitlesSelector = '.styles-module--categoryTitle--1Vkc9.workCaseCard__visible_title'
 var caseImagesSelector = '.styles-module--imageContainer--13Uvg'
@@ -74,52 +74,64 @@ export default class OurWork {
     }
     async firstCaseRedirect() {
         // const cases = await page.$$(casesSelector)
-        const firstCaseSelector = '#caseCard-0'
-        await click(page, firstCaseSelector)
+        const caseSelector = '#caseCard-0'
+        await click(page, caseSelector)
         await page.waitForTimeout(2000)
         expect(page.url()).to.equal('https://new.rubyroidlabs.dev/case_study/automotive')
     }
     async secondCaseRedirect() {
         // const cases = await page.$$(casesSelector)
-        const firstCaseSelector = '#caseCard-1'
-        await click(page, firstCaseSelector)
+        const caseSelector = '#caseCard-1'
+        await click(page, caseSelector)
         await page.waitForTimeout(2000)
         expect(page.url()).to.equal('https://new.rubyroidlabs.dev/case_study/travel')
     }
     async thirdCaseRedirect() {
         // const cases = await page.$$(casesSelector)
-        const firstCaseSelector = '#caseCard-2'
-        await click(page, firstCaseSelector)
+        const caseSelector = '#caseCard-2'
+        await click(page, caseSelector)
         await page.waitForTimeout(2000)
         expect(page.url()).to.equal('https://new.rubyroidlabs.dev/case_study/crm')
     }
     async fourthCaseRedirect() {
         // const cases = await page.$$(casesSelector)
-        const firstCaseSelector = '#caseCard-3'
-        await click(page, firstCaseSelector)
+        const caseSelector = '#caseCard-3'
+        await click(page, caseSelector)
         await page.waitForTimeout(2000)
         expect(page.url()).to.equal('https://new.rubyroidlabs.dev/case_study/e_commerce')
     }
     async fifthCaseRedirect() {
         // const cases = await page.$$(casesSelector)
-        const firstCaseSelector = '#caseCard-4'
-        await click(page, firstCaseSelector)
+        const caseSelector = '#caseCard-4'
+        await click(page, caseSelector)
         await page.waitForTimeout(2000)
         expect(page.url()).to.equal('https://new.rubyroidlabs.dev/case_study/real_estate')
     }
     async sixthCaseRedirect() {
         // const cases = await page.$$(casesSelector)
-        const firstCaseSelector = '#caseCard-5'
-        await click(page, firstCaseSelector)
+        const caseSelector = '#caseCard-5'
+        await click(page, caseSelector)
         await page.waitForTimeout(2000)
         expect(page.url()).to.equal('https://new.rubyroidlabs.dev/case_study/marketing')
     }
     async seventhCaseRedirect() {
         // const cases = await page.$$(casesSelector)
-        const firstCaseSelector = '#caseCard-6'
-        await click(page, firstCaseSelector)
+        const caseSelector = '#caseCard-6'
+        await click(page, caseSelector)
         await page.waitForTimeout(2000)
         expect(page.url()).to.equal('https://new.rubyroidlabs.dev/case_study/fintech')
+    }
+    async casesAreActive() {
+        const activeCase = '.styles-module--workCaseCard--1BsUh.styles-module--hovering--3jp9E.styles-module--caseCardId0--1t7xc.workCaseCard__visible'
+        const firstCase = '#caseCard-0'
+        await shouldNotExist(page, activeCase)
+        await page.hover(firstCase)
+        expect(await isElementVisible(activeCase)).to.be.true
+    }
+    async buttonLocation() {
+        const buttonBox = await(await page.$(viewAllCasesSelector)).boundingBox()
+        const casesBlockBox = await(await page.$(casesBlockSelector)).boundingBox()
+        expect(buttonBox.y).to.be.greaterThan(casesBlockBox.y)
     }
 
 }
