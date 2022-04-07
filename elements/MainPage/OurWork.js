@@ -72,5 +72,54 @@ export default class OurWork {
         expect(await getCount(page, caseRecordsSelector)).to.equal(11)
 
     }
+    async firstCaseRedirect() {
+        // const cases = await page.$$(casesSelector)
+        const firstCaseSelector = '#caseCard-0'
+        await click(page, firstCaseSelector)
+        await page.waitForTimeout(2000)
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/case_study/automotive')
+    }
+    async secondCaseRedirect() {
+        // const cases = await page.$$(casesSelector)
+        const firstCaseSelector = '#caseCard-1'
+        await click(page, firstCaseSelector)
+        await page.waitForTimeout(2000)
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/case_study/travel')
+    }
+    async thirdCaseRedirect() {
+        // const cases = await page.$$(casesSelector)
+        const firstCaseSelector = '#caseCard-2'
+        await click(page, firstCaseSelector)
+        await page.waitForTimeout(2000)
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/case_study/crm')
+    }
+    async fourthCaseRedirect() {
+        // const cases = await page.$$(casesSelector)
+        const firstCaseSelector = '#caseCard-3'
+        await click(page, firstCaseSelector)
+        await page.waitForTimeout(2000)
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/case_study/e_commerce')
+    }
+    async fifthCaseRedirect() {
+        // const cases = await page.$$(casesSelector)
+        const firstCaseSelector = '#caseCard-4'
+        await click(page, firstCaseSelector)
+        await page.waitForTimeout(2000)
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/case_study/real_estate')
+    }
+    async sixthCaseRedirect() {
+        // const cases = await page.$$(casesSelector)
+        const firstCaseSelector = '#caseCard-5'
+        await click(page, firstCaseSelector)
+        await page.waitForTimeout(2000)
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/case_study/marketing')
+    }
+    async seventhCaseRedirect() {
+        // const cases = await page.$$(casesSelector)
+        const firstCaseSelector = '#caseCard-6'
+        await click(page, firstCaseSelector)
+        await page.waitForTimeout(2000)
+        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/case_study/fintech')
+    }
 
 }
