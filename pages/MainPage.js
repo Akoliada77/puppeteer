@@ -7,8 +7,8 @@ const creds = require ('../creds.json')
 export default class MainPage {
     async visit() {
         const firstSection = '.styles-module--containerHeadlineCounters--3aZY7'
-        const url = 'https://new.rubyroidlabs.dev/'
-        await page.goto(url)
+        const url = 'https://rubyroidlabs.dev/'
+        await page.goto(url, {waitUntil : 'networkidle2' })
         expect(await isElementVisible(firstSection)).to.be.true
         expect(page.url()).to.equal(url)
     }

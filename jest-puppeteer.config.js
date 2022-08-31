@@ -2,12 +2,13 @@ const puppeteer = require('puppeteer')
 
 module.exports = {
     launch: {
-        headless: true,
-        defaultViewport: null,
-        // viewport: { width: 1920, height: 1080 },
-        // args: ['--start-maximized'], 
+        headless: false,
+        args: [
+        //     '--disable-dev-shm-usage',
+        //     '--shm-size=3gb',
+            '--window-size=1920,1080'],
         devtools: false,
     },
-    // browserContext: "default",
+    browserContext: "default",
 
 };  
