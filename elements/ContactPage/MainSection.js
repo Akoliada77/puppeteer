@@ -8,11 +8,11 @@ let contactpage
 contactpage = new Contactpage()
 
 // variables for the section
-var sectionSelector = '.styles-module--customerLogos--1wUpb'
+var sectionSelector = '.styles-module--wrapper--lJt7I'
 
-export default class CustomerLogos {
+export default class MainSection {
     async isSectionDisplayed() {
-        expect(await isElementVisible(sectionSelector)).to.be.true
+        expect(await getCount(page, sectionSelector)).to.equal(2)
     }
-
+    
 }
