@@ -7,7 +7,7 @@ module.exports = {
         //     '--disable-dev-shm-usage',
         //     '--shm-size=3gb',
             '--window-size=1920,1080'],
-        devtools: false,
+        devtools: true,
     },
     browserContext: "default",
 

@@ -2,3 +2,5 @@ node_modules
 example.test.js
 creds.json
 package-lock.json
+allure-report
+allure-results

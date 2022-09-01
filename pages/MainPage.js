@@ -18,5 +18,4 @@ export default class MainPage {
             password: creds["credentials.admin.password"]
         })
     } 
-
 }
