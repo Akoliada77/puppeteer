@@ -15,4 +15,8 @@ describe ('Contact Form', () => {
         await contactpage.visit()
         await mainsection.isSectionDisplayed()
     })
+    it('Title is displayed', async() =>{
+        await contactpage.visit()
+        await mainsection.isSectionDisplayed()
+    })
 })
