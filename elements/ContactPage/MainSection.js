@@ -24,5 +24,5 @@ export default class MainSection {
     async textOfSubtitles() {
         expect(await getText(page, sectionSubTitleSelector)).to.equal('Please fill in the form and our team will contact you in 24 business hours to help with the next steps.')
     }
-
+    async
 }
