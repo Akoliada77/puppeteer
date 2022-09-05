@@ -8,9 +8,9 @@ export default class ContactPage {
     async visit() {
         const mainSection = '.styles-module--titleBlock--fFcCI'
         const url = 'https://rubyroidlabs.dev/contact'
-        await page.goto(url, {waitUntil : 'networkidle2' })
+        await page.goto(url)
         expect(await isElementVisible(mainSection)).to.be.true
-        expect(page.url()).to.equal(url)
+        expect(page.url()).to.equal(url+'/')
     }
 
 }
