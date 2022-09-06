@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer')
 
 module.exports = {
     launch: {
-        headless: false,
+        headless: true,
         args: [
         //     '--disable-dev-shm-usage',
         //     '--shm-size=3gb',

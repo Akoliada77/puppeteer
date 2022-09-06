@@ -7,10 +7,11 @@ let mainpage
 
 // variables for the section
 var sectionSelector = '.styles-module--container--nvzWT'
-var titleSelector = '.styles-module--headline--38iHF'
+var titleSelector = '.styles-module--headline--OvNIf'
 var subtitleSelector = '.styles-module--description--MvEw6.subtitle'
-var counterSelector = '.styles-module--countersDirection--OX9c4'
-var buttonSelector = '.styles-module--btnContainer--CRr_9'
+var counterSelector = '.styles-module--countersDirection--vfBG8'
+var buttonSelector = '.styles-module--btnContainer--OMxTg'
+var headerSelector = '.styles-module--header--g--9a'
 
 mainpage = new Mainpage()
 
@@ -22,7 +23,6 @@ export default class FirstSection {
         expect(await isElementVisible(counterSelector)).to.be.true
     }
     async sectionLocation() {
-        const headerSelector = '.styles-module--wrapper__header--18RcT'
         const sectionBox = await(await page.$(sectionSelector)).boundingBox()
         const headerBox = await(await page.$(headerSelector)).boundingBox()
         expect(sectionBox.y).to.be.greaterThan(headerBox.y)
