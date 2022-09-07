@@ -32,7 +32,7 @@ describe ('Development solutions', () => {
         await mainpage.visit()
         await firstSection.subtitleLocation()
     })
-    it('Subtitle text changing', async () =>{
+    it.skip('Subtitle text changing', async () =>{
         await mainpage.visit()
         await firstSection.subtitleChanging()
     })

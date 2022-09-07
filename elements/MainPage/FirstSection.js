@@ -81,9 +81,9 @@ export default class FirstSection {
         expect(countersBox.x).to.be.lessThan(50)
     }
     async countersChanging() {
-        const counter1Selector = '#content > div > div > section.styles-module--container--FSAdL > div.styles-module--containerHeadlineCounters--3aZY7 > div.styles-module--countersDirection--OX9c4 > div:nth-child(1) > div'
-        const counter2Selector = '#content > div > div > section.styles-module--container--FSAdL > div.styles-module--containerHeadlineCounters--3aZY7 > div.styles-module--countersDirection--OX9c4 > div:nth-child(2) > div'
-        const counter3Selector = '#content > div > div > section.styles-module--container--FSAdL > div.styles-module--containerHeadlineCounters--3aZY7 > div.styles-module--countersDirection--OX9c4 > div:nth-child(3) > div'
+        const counter1Selector = '#content > div > section.styles-module--container--nvzWT > div.styles-module--containerHeadlineCounters--u51jK > div.styles-module--countersDirection--vfBG8 > div:nth-child(1) > div'
+        const counter2Selector = '#content > div > section.styles-module--container--nvzWT > div.styles-module--containerHeadlineCounters--u51jK > div.styles-module--countersDirection--vfBG8 > div:nth-child(2) > div'
+        const counter3Selector = '#content > div > section.styles-module--container--nvzWT > div.styles-module--containerHeadlineCounters--u51jK > div.styles-module--countersDirection--vfBG8 > div:nth-child(3) > div'
         const counter1 = await page.$(counter1Selector)
         const counter2 = await page.$(counter2Selector)
         const counter3 = await page.$(counter3Selector)
