@@ -40,7 +40,7 @@ describe ('Development solutions', () => {
         await mainpage.visit()
         await firstSection.countersLocation()
     })
-    it('Counters changing at certain intervals', async () =>{
+    it.skip('Counters changing at certain intervals', async () =>{
         await mainpage.visit()
         await firstSection.countersChanging()
     })
