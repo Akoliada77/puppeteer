@@ -15,8 +15,13 @@ describe ('Contact Form', () => {
         await contactpage.visit()
         await mainsection.isSectionDisplayed()
     })
-    it('Title is displayed', async() =>{
+    it('Check title of Contact page', async () =>{
         await contactpage.visit()
-        await mainsection.isSectionDisplayed()
+        await mainsection.textOfTitle()
     })
+    it('Check subtitle of Contact page', async () =>{
+        await contactpage.visit()
+        await mainsection.textOfSubtitles()
+    })
+    
 })
