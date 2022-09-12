@@ -8,9 +8,9 @@ let mainpage
 mainpage = new Mainpage()
 
 // variables for the section
-var sectionSelector = '.styles-module--gridContainer--3dAwj'
-var customerLogosSelector = '.styles-module--customerLogos--1wUpb'
-var imageSelector = '.gatsby-image-wrapper.gatsby-image-wrapper-constrained.styles-module--teamImage--pX2kk'
+var sectionSelector = '.styles-module--container--dxqiG'
+var customerLogosSelector = '.styles-module--customerLogos--9RWmC'
+var imageSelector = '[data-gatsby-image-ssr]'
 var textBlockSelector = '.styles-module--blockTitleText--3N-Ze'
 var descriptionBlockSelector = '.styles-module--blockDescription--dTCz4'
 var serviceBlocksSelector = '.styles-module--customServiceBlock--3A8Hy'

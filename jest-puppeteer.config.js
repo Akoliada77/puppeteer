@@ -6,7 +6,8 @@ module.exports = {
         args: [
         //     '--disable-dev-shm-usage',
         //     '--shm-size=3gb',
-            '--window-size=1920,1080'],
+        // '--window-size=1920,1080'
+            ],
         devtools: false,
     },
     browserContext: "default",
