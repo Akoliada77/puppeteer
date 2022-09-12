@@ -8,14 +8,13 @@ let mainpage
 mainpage = new Mainpage()
 
 // variables for the section
-var sectionSelector = '.styles-module--container--dxqiG'
+var sectionSelector = '[class="styles-module--gridContainer--AM+X1"]'
 var customerLogosSelector = '.styles-module--customerLogos--9RWmC'
-var imageSelector = '[data-gatsby-image-ssr]'
-var textBlockSelector = '.styles-module--blockTitleText--3N-Ze'
-var descriptionBlockSelector = '.styles-module--blockDescription--dTCz4'
-var serviceBlocksSelector = '.styles-module--customServiceBlock--3A8Hy'
-var circleButtonSelector = '.styles-module--largeCircleButton--1oaGQ.undefined.styles-module--size--1GVWm'
-var descriptionBlockSelector = '.styles-module--blockDescription--dTCz4'
+var imageSelector = '.gatsby-image-wrapper.gatsby-image-wrapper-constrained.styles-module--teamImage--idIT2'
+var titleTextSelector = '.styles-module--blockTitleText--cVdHJ'
+var descriptionBlockSelector = '.styles-module--blockDescription--y0IEU'
+var serviceBlocksSelector = '.styles-module--customServiceBlock--k0ZYo '
+var circleButtonSelector = '.styles-module--largeCircleButton--7nH8Y.undefined.styles-module--size--yGG66'
 var rorServiceBlockSelector = '.styles-module--link--3cfyl.styles-module--customService--2tD_P.styles-module--ror_development--2oCKz'
 var cwpServiceBlockSelector= '#customService-custom_web_development'
 
@@ -30,9 +29,9 @@ export default class GridContainer {
     }
     async sectionContent() {
         expect(await isElementVisible(imageSelector)).to.be.true
-        expect(await isElementVisible(textBlockSelector)).to.be.true
+        expect(await isElementVisible(titleTextSelector)).to.be.true
         expect(await isElementVisible(descriptionBlockSelector)).to.be.true
-        expect(await getCount(page, serviceBlocksSelector)).to.equal(6)
+        expect(await getCount(page, serviceBlocksSelector)).to.equal(5)
         expect(await isElementVisible(circleButtonSelector)).to.be.true
     }
     async imageLocation() {
@@ -50,11 +49,11 @@ export default class GridContainer {
     }
     async textBlockLocation() {
         const imageBlockBox = await (await page.$(imageSelector)).boundingBox()
-        const textBlockBox = await (await page.$(textBlockSelector)).boundingBox()
+        const textBlockBox = await (await page.$(titleTextSelector)).boundingBox()
         expect(textBlockBox.x+textBlockBox.width).to.be.lessThan(imageBlockBox.y)
     }
     async checkThatTextBlockHasText() {
-        expect(await getText(page, textBlockSelector)).to.include('Custom software development services')
+        expect(await getText(page, titleTextSelector)).to.include('Custom software development services')
     }
     async descritionBlockContent() {
         const descriptionImageSelector = '#content > div > section.styles-module--container--1XxoU > div.styles-module--gridContainer--3dAwj > div > div.styles-module--blockDescription--dTCz4 > svg'
@@ -81,7 +80,7 @@ export default class GridContainer {
     async rorServiceBlockLocation() {
         const rorServiceBlockBox = await(await page.$(rorServiceBlockSelector)).boundingBox()
         const sectionBox = await(await page.$(sectionSelector)).boundingBox()
-        const titleBlockBox = await(await page.$(textBlockSelector)).boundingBox()
+        const titleBlockBox = await(await page.$(titleTextSelector)).boundingBox()
         expect(rorServiceBlockBox.x).to.be.greaterThan(sectionBox.x)
         expect(rorServiceBlockBox.x).to.be.lessThan(43)
         expect(rorServiceBlockBox.y).to.be.greaterThan(titleBlockBox.y)
