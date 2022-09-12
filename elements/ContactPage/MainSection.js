@@ -11,6 +11,8 @@ contactpage = new Contactpage()
 var sectionSelector = '.content'
 var sectionTitleSelector = '.styles-module--titleBlock--fFcCI'
 var sectionSubTitleSelector = '.styles-module--subTitle--alz9U'
+var firstQuestionSelector = '.styles-module--formLine--aVckh'
+var buttonsSelector = '.styles-module--block--wIsB1'
 
 
 export default class MainSection {
@@ -24,5 +26,11 @@ export default class MainSection {
     async textOfSubtitles() {
         expect(await getText(page, sectionSubTitleSelector)).to.equal('Please fill in the form and our team will contact you in 24 business hours to help with the next steps.')
     }
-    async
+    async firstQuestionIsDisplayed() {
+        expect(await isElementVisible(firstQuestionSelector)).to.be.true
+    }
+    async buttonsInFirstQuestion() {
+        expect(await getCount(page, buttonsSelector)).to.equal(15)
+        
+    }
 }

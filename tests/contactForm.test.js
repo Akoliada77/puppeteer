@@ -23,5 +23,9 @@ describe ('Contact Form', () => {
         await contactpage.visit()
         await mainsection.textOfSubtitles()
     })
-    
+    it('Check that first question is displayed', async () =>{
+        await contactpage.visit()
+        await mainsection.firstQuestionIsDisplayed()
+    })
+
 })
