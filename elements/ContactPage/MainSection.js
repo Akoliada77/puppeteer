@@ -13,6 +13,8 @@ var sectionTitleSelector = '.styles-module--titleBlock--fFcCI'
 var sectionSubTitleSelector = '.styles-module--subTitle--alz9U'
 var firstQuestionSelector = '.styles-module--formLine--aVckh'
 var buttonsSelector = '.styles-module--block--wIsB1'
+var inactive = '::before'
+var active = '::after'
 
 
 export default class MainSection {
@@ -30,7 +32,13 @@ export default class MainSection {
         expect(await isElementVisible(firstQuestionSelector)).to.be.true
     }
     async buttonsInFirstQuestion() {
+        let firstButtonSelector = '.styles-module--label--rzKQ8'
         expect(await getCount(page, buttonsSelector)).to.equal(15)
+        console.log(firstButtonSelector+inactive)
+        // expect(await isElementVisible(firstButtonSelector+inactive)).to.be.true
+    }
+    async showingResults() {
+        await buttonsSelector(0).click()
         
     }
 }
