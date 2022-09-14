@@ -15,6 +15,9 @@ var firstQuestionSelector = '.styles-module--formLine--aVckh'
 var buttonsSelector = '.styles-module--block--wIsB1'
 var inactive = '::before'
 var active = '::after'
+var nextButtonSelector = '.styles-module--buttonColor--DAfu3'
+var backButtonSelector = '.styles-module--buttonColor--z2Vc8'
+var inputBlockSelector = '.styles-module--visible--Chk5Q.styles-module--stepThirdBlock--KdRQH'
 
 
 export default class MainSection {
@@ -38,7 +41,26 @@ export default class MainSection {
         // expect(await isElementVisible(firstButtonSelector+inactive)).to.be.true
     }
     async showingResults() {
-        await buttonsSelector(0).click()
-        
+        // const linkHandlers = await page.$x("//a[contains(text(), 'dedicated developer')]")
+        // console.log(linkHandlers)
+        // let button = await page.evaluate(() => {
+        //     [...document.querySelectorAll('.styles-module--label--rzKQ8')].find(element => element.outerHTML === 'dedicated developer')
+        //   })
+        // console.log(button)
+        // if (buttonsSelector.length > 0) {
+        //     await buttonsSelector[0].click()
+        //   } else {
+        //     throw new Error("Link not found")
+        //   }
+        // await shouldNotExist(page,)
+        // await click(page, nextButtonSelector)
+        let buttons = await page.$$(buttonsSelector)
+        await buttons[0].click()
+        await shouldNotExist(page, backButtonSelector)
+        let nextButton = await page.$(nextButtonSelector)
+        await nextButton.click()
+        expect(await isElementVisible(backButtonSelector)).to.be.true
+        await nextButton.click()
+        // expect(await isElementVisible(inputBlockSelector)).to.be.true
     }
 }
