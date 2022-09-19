@@ -12,7 +12,8 @@ var sectionSelector = '.content'
 var sectionTitleSelector = '.styles-module--titleBlock--fFcCI'
 var sectionSubTitleSelector = '.styles-module--subTitle--alz9U'
 var firstQuestionSelector = '.styles-module--formLine--aVckh'
-var buttonsSelector = '.styles-module--label--rzKQ8'
+var secondQuestionSelector = '.styles-module--checkboxesBlock--oBuzV.styles-module--visible--Chk5Q '
+var buttonsSelector = '.styles-module--button--4JFp1'
 var inactive = '::before'
 var active = '::after'
 var nextButtonSelector = '.styles-module--buttonColor--DAfu3'
@@ -54,20 +55,16 @@ export default class MainSection {
         //   }
         // await shouldNotExist(page,)
         // await click(page, nextButtonSelector)
-        let buttons = await page.$$(buttonsSelector)
-        await buttons[0].click()
-        await shouldNotExist(page, backButtonSelector)
-        let nextButton = await page.$$(nextButtonSelector)
-        await nextButton[0].click()
-        try {
-            await page.waitForTimeout(2)
-        } catch (error) {
-            console.log('###########################')
-            console.log(error)
-        }
-        // expect(await isElementVisible(backButtonSelector)).to.be.true
-        await nextButton.click()
+        await click(page, '#content > div > div:nth-child(3) > form > div:nth-child(1) > div:nth-child(1) > div > div > div.styles-module--checkboxesBlock--oBuzV.undefined > div:nth-child(2) > div:nth-child(1) > label')
+        await click(page, '#content > div > div:nth-child(3) > form > div:nth-child(1) > div:nth-child(1) > div > div > div.styles-module--checkboxesBlock--oBuzV.undefined > div.styles-module--buttons--DTLNk > div > button')
+        // let buttons = await page.$$(buttonsSelector)
+        // await buttons[0].click()
+        await page.waitForTimeout(1000)
+        expect(await isElementVisible(secondQuestionSelector)).to.be.true
+        expect(await isElementVisible(backButtonSelector)).to.be.true
+        await click(page, '#content > div > div:nth-child(3) > form > div:nth-child(1) > div:nth-child(2) > div > div > div.styles-module--checkboxesBlock--oBuzV.styles-module--visible--Chk5Q > div.styles-module--buttons--DTLNk > div > button > div')
         await page.waitForSelector(inputBlockSelector).catch(e => e)
         // expect(await isElementVisible(inputBlockSelector)).to.be.true
     }
+    async 
 }
