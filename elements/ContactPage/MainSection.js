@@ -12,7 +12,7 @@ var sectionSelector = '.content'
 var sectionTitleSelector = '.styles-module--titleBlock--fFcCI'
 var sectionSubTitleSelector = '.styles-module--subTitle--alz9U'
 var firstQuestionSelector = '.styles-module--formLine--aVckh'
-var buttonsSelector = '.styles-module--block--wIsB1'
+var buttonsSelector = '.styles-module--label--rzKQ8'
 var inactive = '::before'
 var active = '::after'
 var nextButtonSelector = '.styles-module--buttonColor--DAfu3'
@@ -57,10 +57,17 @@ export default class MainSection {
         let buttons = await page.$$(buttonsSelector)
         await buttons[0].click()
         await shouldNotExist(page, backButtonSelector)
-        let nextButton = await page.$(nextButtonSelector)
+        let nextButton = await page.$$(nextButtonSelector)
+        await nextButton[0].click()
+        try {
+            await page.waitForTimeout(2)
+        } catch (error) {
+            console.log('###########################')
+            console.log(error)
+        }
+        // expect(await isElementVisible(backButtonSelector)).to.be.true
         await nextButton.click()
-        expect(await isElementVisible(backButtonSelector)).to.be.true
-        await nextButton.click()
+        await page.waitForSelector(inputBlockSelector).catch(e => e)
         // expect(await isElementVisible(inputBlockSelector)).to.be.true
     }
 }
