@@ -56,7 +56,7 @@ export default class MainSection {
         // await shouldNotExist(page,)
         // await click(page, nextButtonSelector)
         await click(page, '#content > div > div:nth-child(3) > form > div:nth-child(1) > div:nth-child(1) > div > div > div.styles-module--checkboxesBlock--oBuzV.undefined > div:nth-child(2) > div:nth-child(1) > label')
-        await click(page, '#content > div > div:nth-child(3) > form > div:nth-child(1) > div:nth-child(1) > div > div > div.styles-module--checkboxesBlock--oBuzV.undefined > div.styles-module--buttons--DTLNk > div > button')
+        await click(page, '#content > div.content > div:nth-child(3) > form > div:nth-child(1) > div:nth-child(1) > div > div > div.styles-module--checkboxesBlock--oBuzV.undefined > div.styles-module--buttons--DTLNk > div > button')
         // let buttons = await page.$$(buttonsSelector)
         // await buttons[0].click()
         await page.waitForTimeout(1000)
@@ -65,6 +65,5 @@ export default class MainSection {
         await click(page, '#content > div > div:nth-child(3) > form > div:nth-child(1) > div:nth-child(2) > div > div > div.styles-module--checkboxesBlock--oBuzV.styles-module--visible--Chk5Q > div.styles-module--buttons--DTLNk > div > button > div')
         await page.waitForSelector(inputBlockSelector).catch(e => e)
         // expect(await isElementVisible(inputBlockSelector)).to.be.true
-    }
-    async 
+    } 
 }
