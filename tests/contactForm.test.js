@@ -42,5 +42,6 @@ describe ('Contact Form', () => {
         await contactpage.visit()
         await gridcontainercontact.correctEmailDisplayed()
     })
+    
 
 })

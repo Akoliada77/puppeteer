@@ -28,5 +28,5 @@ export default class GridContainerContact {
         expect(linksContent).to.include('<a href="https://www.facebook.com/rubyroidlabs" rel="nofollow">facebook</a>')
         expect(linksContent).to.include('<a href="https://www.youtube.com/channel/UCVMhNTgjF6jTeTmX-DXvQBw" rel="nofollow">youtube</a>')
     }
-    async 
+     
 }
