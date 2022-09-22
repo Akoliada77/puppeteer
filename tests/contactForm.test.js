@@ -1,11 +1,13 @@
 import ContactPage from '../pages/ContactPage'
 import MainSection from '../elements/ContactPage/MainSection'
 import GridContainerContact from '../elements/ContactPage/GridContainerContact'
+import OurOffices from '../elements/ContactPage/OurOffices'
 
 describe ('Contact Form', () => {
     let contactpage 
     let mainsection
     let gridcontainercontact
+    let ouroffices
    
     jest.setTimeout(40000)
 
@@ -13,6 +15,7 @@ describe ('Contact Form', () => {
         contactpage = new ContactPage()
         mainsection = new MainSection()
         gridcontainercontact = new GridContainerContact()
+        ouroffices = new OurOffices()
     })
     it('Section is displayed', async() =>{
         await contactpage.visit()
@@ -42,6 +45,16 @@ describe ('Contact Form', () => {
         await contactpage.visit()
         await gridcontainercontact.correctEmailDisplayed()
     })
-    
-
+    it('Check that our offices section displayed', async () =>{
+        await contactpage.visit()
+        await ouroffices.isSectionDisplayed()
+    })
+    it('Check text of our offices title', async () =>{
+        await contactpage.visit()
+        await ouroffices.titleContent()
+    })
+    it('Check content location of our offices section', async () =>{
+        await contactpage.visit()
+        await ouroffices.contentLocation()
+    })
 })

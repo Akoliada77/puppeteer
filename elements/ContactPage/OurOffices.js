@@ -5,9 +5,8 @@ import Contactpage from '../../pages/ContactPage'
 
 // variables for the section
 var sectionSelector = '.styles-module--container--xr8Zs'
-var emailSelector = '.styles-module--email--qs944'
-var titleSelector = '.styles-module--title--ADNIE'
-var socialLinksSelector = '.styles-module--links--YebAu'
+var titleSelector = 'div.h1'
+var contentSelector = '.styles-module--blockLocation--VBsMj'
 
 
 export default class OurOffices {
@@ -15,5 +14,12 @@ export default class OurOffices {
     async isSectionDisplayed() {
         expect(await isElementVisible(sectionSelector)).to.be.true
     }
-
+    async titleContent() {
+        expect(await getText(page, titleSelector)).to.eq('Our offices')
+    }
+    async contentLocation() {
+        const titleBox = await(await page.$(titleSelector)).boundingBox()
+        const contentBox = await(await page.$(contentSelector)).boundingBox() 
+        expect(contentBox.y).to.be.greaterThan(titleBox.y)
+    }
 }
