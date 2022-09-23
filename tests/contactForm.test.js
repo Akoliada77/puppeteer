@@ -57,4 +57,9 @@ describe ('Contact Form', () => {
         await contactpage.visit()
         await ouroffices.contentLocation()
     })
+    it('Check that 2 offices are displayed', async () =>{
+        await contactpage.visit()
+        await ouroffices.checkAmountOfOffices()
+    })
+    
 })
