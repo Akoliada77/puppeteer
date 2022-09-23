@@ -40,4 +40,5 @@ export default class OurOffices {
         const officesAddresses = await page.$$(officeAddressesSelector)
         console.log(await getText (page, officesAddresses[1]))
     }
+    
 }
