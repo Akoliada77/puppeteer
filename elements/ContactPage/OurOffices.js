@@ -9,6 +9,7 @@ var titleSelector = 'div.h1'
 var contentSelector = '.styles-module--blockLocation--VBsMj'
 var officesSelector = '.styles-module--addressBlock--E0zXs'
 var imageSelector = '.gatsby-image-wrapper.gatsby-image-wrapper-constrained.styles-module--image--nOF7d'
+var officeAddressesSelector = '.styles-module--address--iuo0V'
 
 
 export default class OurOffices {
@@ -34,5 +35,9 @@ export default class OurOffices {
         const officesBox = await(await page.$(officesSelector)).boundingBox()
         const imageBox = await(await page.$(imageSelector)).boundingBox()   
         expect(imageBox.x).to.be.greaterThan(officesBox.x)
+    }
+    async addressesContent() {
+        const officesAddresses = await page.$$(officeAddressesSelector)
+        console.log(await getText (page, officesAddresses[1]))
     }
 }
