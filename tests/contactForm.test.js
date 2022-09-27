@@ -69,8 +69,8 @@ describe ('Contact Form', () => {
         await contactpage.visit()
         await ouroffices.imageLocation()
     })
-    it('Check content of offices addresses', async () =>{
+    it('Check content of Warsaw office', async () =>{
         await contactpage.visit()
-        await ouroffices.addressesContent()
+        await ouroffices.warsawOfficeContent()
     })
 })

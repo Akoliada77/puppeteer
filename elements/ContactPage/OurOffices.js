@@ -36,10 +36,14 @@ export default class OurOffices {
         const imageBox = await(await page.$(imageSelector)).boundingBox()   
         expect(imageBox.x).to.be.greaterThan(officesBox.x)
     }
-    async addressesContent() {
-        // const firstAdressText = await getText(page, '#content > div > div.styles-module--container--xr8Zs > div.styles-module--blockLocation--VBsMj > div.styles-module--allAdress--q\+6nm > div:nth-child(1) > div.styles-module--address--iuo0V')
-        const warsawOfficeText = await getText(page, officeAddressesSelector)
-        expect(warsawOfficeText).to.eq('Marszalkowska 26/134, Warsaw, 00-008')
+    async warsawOfficeContent() {
+        const warsawOfficeAddress = await getText(page, officeAddressesSelector)
+        // const warsawOfficeTitle = await getText(page, '#content > div > div.styles-module--container--xr8Zs > div.styles-module--blockLocation--VBsMj > div.styles-module--allAdress--q\+6nm > div:nth-child(1) > div.h5')
+        const warsawOfficePhoneNumber = await getText(page, '[href="tel:+ 48 571 942 081"]')
+        expect(warsawOfficeAddress).to.eq('Marszalkowska 26/134, Warsaw, 00-008')
+        // expect(warsawOfficeTitle).to.eq('Poland')
+        expect(warsawOfficePhoneNumber).to.eq('+ 48 571 942 081')
+
     }
 
 }
