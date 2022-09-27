@@ -61,5 +61,13 @@ describe ('Contact Form', () => {
         await contactpage.visit()
         await ouroffices.checkAmountOfOffices()
     })
+    it('Check that image is displayed', async () =>{
+        await contactpage.visit()
+        await ouroffices.imageIsDisplayed()
+    })
+    it('Check image location', async () =>{
+        await contactpage.visit()
+        await ouroffices.imageLocation()
+    })
     
 })
