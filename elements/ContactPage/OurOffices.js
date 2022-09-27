@@ -37,8 +37,9 @@ export default class OurOffices {
         expect(imageBox.x).to.be.greaterThan(officesBox.x)
     }
     async addressesContent() {
-        const officesAddresses = await page.$$(officeAddressesSelector)
-        console.log(await getText (page, officesAddresses[1]))
+        // const firstAdressText = await getText(page, '#content > div > div.styles-module--container--xr8Zs > div.styles-module--blockLocation--VBsMj > div.styles-module--allAdress--q\+6nm > div:nth-child(1) > div.styles-module--address--iuo0V')
+        const warsawOfficeText = await getText(page, officeAddressesSelector)
+        expect(warsawOfficeText).to.eq('Marszalkowska 26/134, Warsaw, 00-008')
     }
-    
+
 }
