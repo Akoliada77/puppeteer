@@ -8,7 +8,7 @@ var casesSectionSelector = '.styles-module--wrapper--lJt7I.styles-module--offset
 
 export default class OurWork {
     async visit() {
-        const url = 'https://rubyroidlabs.dev/case_study'
+        const url = 'https://rubyroidlabs.dev/case-study/'
         await page.goto(url)
         expect(await isElementVisible(casesSectionSelector)).to.be.true
         expect(page.url()).to.equal(url)
