@@ -11,4 +11,16 @@ describe ('Why work with us section', () => {
         firstSection = new FirstSection()
         ourWork = new OurWork()
     })
+    it('Check first section is displayed', async () =>{
+        await ourWork.visit()
+        await firstSection.isSectionDisplayed()
+    })
+    it('Check title text', async () =>{
+        await ourWork.visit()
+        await firstSection.titleText()
+    })
+    it('Check subTitle text', async () =>{
+        await ourWork.visit()
+        await firstSection.subTitleText()
+    })
 })
