@@ -23,4 +23,13 @@ describe ('Why work with us section', () => {
         await ourWork.visit()
         await firstSection.subTitleText()
     })
+    it('Check that cases section is displyaed', async () =>{
+        await ourWork.visit()
+        await casesSection.isSectionDisplayed()
+    })
+    it('Check cases section content', async () =>{
+        await ourWork.visit()
+        await casesSection.sectionContent()
+    })
+
 })
