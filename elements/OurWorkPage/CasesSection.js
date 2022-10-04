@@ -31,12 +31,14 @@ export default class CasesSection {
     async changingSortingButtons () {
         expect(await getText(page, '.styles-module--activeMainSorting--mCezK')).to.eq('Industries')
         // const sortingButtons = await page.$$(sortingItemsSelector)
-        // await sortingButtons[0].click()
-        const element = elements.find(element => element.innerHTML === 'All')
-            if (element) {
-                element.click()
-            }
-        // expect(await getText(page, '.styles-module--activeMainSorting--mCezK')).to.eq('All')
+        // await sortingButtons[2].click()
+        await click(page, '#content > div.content > div:nth-child(3) > ul > li:nth-child(1)')
+        await page.waitForTimeout(500)
+        expect(await getText(page, '.styles-module--activeMainSorting--mCezK')).to.eq('All')
+        // const element = elements.find(element => element.innerHTML === 'All')
+        //     if (element) {
+        //         element.click()
+        //     }
         // await sortingButtons[2].click()
         // expect(await getText(page, '.styles-module--activeMainSorting--mCezK')).to.eq('Services')
     }
