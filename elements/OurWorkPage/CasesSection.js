@@ -49,4 +49,8 @@ export default class CasesSection {
     async checkCasesQantity() {
         expect(await getCount(page, casesSelector)).to.eq(12)
     }
+    async checkMiniCasesQantity() {
+        expect(await getCount(page, miniCasesSelector)).to.eq(15)
+
+    }
 }

@@ -35,5 +35,9 @@ describe ('Why work with us section', () => {
         await ourWork.visit()
         await casesSection.checkCasesQantity()
     })
+    it('Check mini cases quantity', async () =>{
+        await ourWork.visit()
+        await casesSection.checkMiniCasesQantity()
+    })
 
 })
