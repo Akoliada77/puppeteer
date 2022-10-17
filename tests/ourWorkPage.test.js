@@ -1,15 +1,21 @@
 import OurWork from '../pages/OurWork'
 import FirstSection from '../elements/OurWorkPage/FirstSection'
+import CasesSection from '../elements/OurWorkPage/CasesSection'
+import ContactForm from '../elements/OurWorkPage/ContactForm'
 
 describe ('Why work with us section', () => {
     let firstSection 
     let ourWork
+    let casesSection
+    let contactForm
    
     jest.setTimeout(40000)
 
     beforeAll(async() =>{
         firstSection = new FirstSection()
         ourWork = new OurWork()
+        casesSection = new CasesSection()
+        contactForm = new ContactForm()
     })
     it('Check first section is displayed', async () =>{
         await ourWork.visit()
@@ -47,5 +53,10 @@ describe ('Why work with us section', () => {
         await ourWork.visit()
         await casesSection.linkInHireUsButton()
     })
+    it('Check that contact form is displayed', async () =>{
+        await ourWork.visit()
+        await contactForm.isSectionDisplayed()
+    })
+    
 
 })
