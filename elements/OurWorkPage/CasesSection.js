@@ -53,4 +53,9 @@ export default class CasesSection {
         expect(await getCount(page, miniCasesSelector)).to.eq(15)
 
     }
+    async checkHireUsButtonLocation() {
+        const lastMiniCaseBox = await (await page.$('#caseSmall_17')).boundingBox()
+        const hireUsButtonBox = await(await page.$(buttonHireUsSelector)).boundingBox()
+        expect(hireUsButtonBox.y).to.be.greaterThan(lastMiniCaseBox.y)
+    }
 }
