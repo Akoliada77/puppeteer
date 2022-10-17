@@ -58,4 +58,8 @@ export default class CasesSection {
         const hireUsButtonBox = await(await page.$(buttonHireUsSelector)).boundingBox()
         expect(hireUsButtonBox.y).to.be.greaterThan(lastMiniCaseBox.y)
     }
+    async linkInHireUsButton() {
+        const href = await page.$eval('.styles-module--link--mhand', anchor => anchor.getAttribute('href'));
+        expect(href).to.eq('/contact')
+    }
 }

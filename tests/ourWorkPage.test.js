@@ -43,5 +43,9 @@ describe ('Why work with us section', () => {
         await ourWork.visit()
         await casesSection.checkHireUsButtonLocation()
     })
+    it('Check link in hire us button', async () =>{
+        await ourWork.visit()
+        await casesSection.linkInHireUsButton()
+    })
 
 })
