@@ -57,6 +57,9 @@ describe ('Why work with us section', () => {
         await ourWork.visit()
         await contactForm.isSectionDisplayed()
     })
-    
+    it('Check contact form content', async () =>{
+        await ourWork.visit()
+        await contactForm.sectionContent()
+    })
 
 })
