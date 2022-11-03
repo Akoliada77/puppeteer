@@ -3,15 +3,15 @@ const { generateEmail, generateID, generateNumbers } = require('../../lib/utils'
 import { expect, use } from 'chai'
 import TeamPage from '../../pages/TeamPage'
 
-let ourwork
+let teampage
 
-// variables for the section
+// variables for the section    
 var titleSelector = '.styles-module--title--dsH4E'
 var subTitleSelector = '.styles-module--subTitle--alz9U'
 var imageSelector = '.gatsby-image-wrapper.gatsby-image-wrapper-constrained.styles-module--image--PVE0H'
 var breadCrumbsSelector = '.breadcrumb'
 
-ourwork = new TeamPage()
+teampage = new TeamPage()
 
 export default class FirstSection {
     async isSectionDisplayed() {
@@ -26,6 +26,4 @@ export default class FirstSection {
         expect(await getText(page, `${titleSelector} h1`)).to.eq('Team.')
         expect(await getText(page, subTitleSelector)).to.eq('Rubyroid Labs is a team of programmers, project managers, testers, designers and business analysts.')
     }
-    async
-
 }
