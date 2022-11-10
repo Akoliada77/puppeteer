@@ -1,11 +1,13 @@
 import TeamPage from '../pages/TeamPage'
 import FirstSection from '../elements/TeamPage/FirstSection'
 import GreenBlock from '../elements/TeamPage/GreenBlock'
+import OurStory from '../elements/TeamPage/OurStory'
 
 describe ('Why work with us section', () => {
     let teampage 
     let firstSection
     let greenBlock
+    let ourStory
    
     jest.setTimeout(40000)
 
@@ -13,6 +15,7 @@ describe ('Why work with us section', () => {
         firstSection = new FirstSection()
         teampage = new TeamPage()
         greenBlock = new GreenBlock()
+        ourStory = new OurStory()
 
     })
     it('Check first section is displayed', async () =>{
@@ -23,8 +26,16 @@ describe ('Why work with us section', () => {
         await teampage.visit()
         await firstSection.sectionContent()
     })
-    it('Check first section content', async () =>{
+    it('Check that green block is displayed', async () =>{
         await teampage.visit()
         await greenBlock.isSectionDisplayed()
+    })
+    it('Check green block content', async () =>{
+        await teampage.visit()
+        await greenBlock.sectionContent()
+    })
+    it('Check that our story section is displayed', async () =>{
+        await teampage.visit()
+        await ourStory.sectionContent()
     })
 })
