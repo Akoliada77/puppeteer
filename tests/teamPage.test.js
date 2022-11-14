@@ -36,6 +36,10 @@ describe ('Why work with us section', () => {
     })
     it('Check that our story section is displayed', async () =>{
         await teampage.visit()
-        await ourStory.sectionContent()
+        await ourStory.isSectionDisplayed()
+    })
+    it('Check our story section title', async () =>{
+        await teampage.visit()
+        await ourStory.titleContent()
     })
 })

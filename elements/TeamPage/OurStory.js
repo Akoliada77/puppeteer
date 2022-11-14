@@ -7,13 +7,17 @@ let teampage
 
 // variables for the section
 var sectionSelector = '.styles-module--wrapper--HEp2R.styles-module--containerOffsets--4ubdB'
+var titleSelector = '.styles-module--containerOffsets--4ubdB h2'
 
 
 teampage = new TeamPage()
 
 export default class OurStory {
     async isSectionDisplayed() {
-        await isElementVisible(sectionSelector).to.be.true
+        expect(await isElementVisible(sectionSelector)).to.be.true
     }  
+    async titleContent() {
+        expect(await getText(page, titleSelector)).to.eq('Our story')
+    }
 
 }
