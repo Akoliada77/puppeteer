@@ -2,12 +2,14 @@ import TeamPage from '../pages/TeamPage'
 import FirstSection from '../elements/TeamPage/FirstSection'
 import GreenBlock from '../elements/TeamPage/GreenBlock'
 import OurStory from '../elements/TeamPage/OurStory'
+import Leaderboard from '../elements/TeamPage/Leaderboard'
 
 describe ('Why work with us section', () => {
     let teampage 
     let firstSection
     let greenBlock
     let ourStory
+    let leadership
    
     jest.setTimeout(40000)
 
@@ -16,6 +18,7 @@ describe ('Why work with us section', () => {
         teampage = new TeamPage()
         greenBlock = new GreenBlock()
         ourStory = new OurStory()
+        leadership = new Leadership()
 
     })
     it('Check first section is displayed', async () =>{
@@ -49,5 +52,17 @@ describe ('Why work with us section', () => {
     it('Check customer logos amount', async () =>{
         await teampage.visit()
         await ourStory.logosAmount()
+    })
+    it('Check that leadership section is displayed', async () =>{
+        await teampage.visit()
+        await leadership.isSectionDisplayed()
+    })
+    it('Check title text in leadership section', async () =>{
+        await teampage.visit()
+        await leadership.titleText()
+    })
+    it('Check leaders amount in leadership section', async () =>{
+        await teampage.visit()
+        await leadership.titleText()
     })
 })
