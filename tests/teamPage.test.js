@@ -44,6 +44,10 @@ describe ('Why work with us section', () => {
     })
     it('Check our story content location', async () =>{
         await teampage.visit()
-        await ourStory.textLocation()
+        await ourStory.contentLocation()
+    })
+    it('Check customer logos amount', async () =>{
+        await teampage.visit()
+        await ourStory.logosAmount()
     })
 })

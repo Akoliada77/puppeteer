@@ -12,6 +12,7 @@ var textOnTopSelector = '.styles-module--textTop--Rcf+C'
 var imageSelector = '.styles-module--image--6cH0i'
 var textAtBottomSelector = '.styles-module--textBottom--3CLwz'
 var customerLogosSelector = '.styles-module--customerLogos--9RWmC'
+var logosSelector = '.styles-module--addedLogoStyles--GdmxX'
 
 
 teampage = new TeamPage()
@@ -30,12 +31,15 @@ export default class OurStory {
         expect(await isElementVisible(textAtBottomSelector)).to.be.true
         expect(await isElementVisible(customerLogosSelector)).to.be.true
     }
-    async textLocation() {
+    async contentLocation() {
         const imageBox = await(await page.$(imageSelector)).boundingBox()
         const textBottomBox = await(await page.$(textAtBottomSelector)).boundingBox()
         const customerLogosBox = await(await page.$(customerLogosSelector)).boundingBox()
         expect(imageBox.y).to.be.lessThan(textBottomBox.y)
         expect(textBottomBox.y).to.be.lessThan(customerLogosBox.y)
+    }
+    async logosAmount() {
+        expect(await getCount(page, logosSelector)).to.eq(5)
     }
 
 }
