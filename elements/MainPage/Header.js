@@ -14,6 +14,10 @@ var rorButtonSelector = '.styles-module--linkRor--1uR-5.styles-module--link--8yY
 var contactButtonSelector = '.styles-module--link--YZyu9'
 var burgerMenuSelector = '.styles-module--button--mm5wW'
 var firstSectionSelector = '.styles-module--containerHeadlineCounters--u51jK'
+var menuHiddenSelector = '.styles-module--menu--c04Ib.styles-module--hidden--PJuJG'
+var linksSelector = '.styles-module--mainNavigation--qs5sm'
+var contactUsLinkSelector = '.styles-module--innerNav__link--uqbrY'
+
 
 
 export default class Header {
@@ -83,19 +87,13 @@ export default class Header {
         expect(burgerBoundingBox.y).to.be.lessThan(39)
     }
     async burgerMenuOpening() {
-        const burgerSelector = '.styles-module--button--2i6R4' 
-        const menuHiddenSeletor = '.styles-module--menu--1Hjqu.styles-module--hidden--2Lebr'
-        const menuVisibleSelector = '.styles-module--menu--1Hjqu'
-        // expect(await isElementVisible(menuHiddenSeletor)).to.be.false
-        await shouldNotExist(page, menuVisibleSelector)
-        expect(await isElementVisible(menuVisibleSelector)).to.be.false
-        await click(page, burgerSelector)
-        expect(await isElementVisible(menuVisibleSelector)).to.be.true
+        await page.waitForSelector(menuHiddenSelector)
+        await click(page, '#content > header > div > header > div.styles-module--navigation--1vcge > div.styles-module--button--mm5wW')
+        await shouldNotExist(page, menuHiddenSelector)
+        // expect(await isElementVisible(menuHiddenSelector)).to.be.false
     }
     async modalWindowContent() {
-        const logoSelector = '.styles-module--logo--3Gocn'
-        const linksSelector = '.styles-module--mainNavigation--29RGU'
-        const contactUsLinkSelector = '.styles-module--leftArrowButton--3G3oW.styles-module--innerNav__link--3WDhj'
+        await shouldNotExist(page, menuHiddenSelector)
         expect(await getCount(page, linksSelector)).to.equal(5)
         expect(await isElementVisible(logoSelector)).to.be.true 
         expect(await isElementVisible(contactUsLinkSelector)).to.be.true
