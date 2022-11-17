@@ -13,6 +13,7 @@ var logoSelector = '.styles-module--logo--K3rL2'
 var rorButtonSelector = '.styles-module--linkRor--1uR-5.styles-module--link--8yY3g'
 var contactButtonSelector = '.styles-module--link--YZyu9'
 var burgerMenuSelector = '.styles-module--button--mm5wW'
+var firstSectionSelector = '.styles-module--containerHeadlineCounters--u51jK'
 
 
 export default class Header {
@@ -36,10 +37,8 @@ export default class Header {
         expect(logoBox.y).to.be.lessThan(31)
     }
     async logoRedirection() {
-        const logoSelector = '.styles-module--logo--3Gocn'
-        const firstSectionSelector = '.styles-module--containerHeadlineCounters--3aZY7'
         await click(page, logoSelector)
-        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/')
+        expect(page.url()).to.equal('https://rubyroidlabs.dev/')
         expect(await isElementVisible(firstSectionSelector)).to.be.true
     }
     async rorButtonHover() {
@@ -55,36 +54,33 @@ export default class Header {
           console.log(data)
     }
     async rorLinkRedirect(){
-        const rorLinkSelector = '.styles-module--linkRor--TEgXa.styles-module--link--ZNrzI'
-        const rorLink = await page.$(rorLinkSelector)
+        const rorLink = await page.$(rorButtonSelector)
         const href = await (await rorLink.getProperty('href')).jsonValue()
-        expect(href).to.equal('https://new.rubyroidlabs.dev/services/ror_development')
+        expect(href).to.equal('https://rubyroidlabs.dev/services/ror_development')
         // await click(page, rorLink)
         // await page.waitForTimeout(2000)
         // // await page.waitForNavigation()
         // expect(page.url()).to.equal('https://new.rubyroidlabs.dev/services/ror_development')
     }
     async contactLinkRedirect(){
-        const contactLinkSelector = await page.$('.styles-module--link--1BKwL')
-        const href = await (await contactLinkSelector.getProperty('href')).jsonValue();
-        expect(href).to.equal('https://new.rubyroidlabs.dev/contact')
-        const contactLinkSelector2 = ('#content > div > header > div > header > div.styles-module--navigation--2vh3P > div.styles-module--nav--2gL6i > div.styles-module--link--ZNrzI > a')
-        await click(page, contactLinkSelector2)
-        await page.waitForNavigation()
-        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/contact')
+        const contactButton = await page.$(contactButtonSelector)
+        const href = await (await contactButton.getProperty('href')).jsonValue()
+        expect(href).to.equal('https://rubyroidlabs.dev/contact')
+        await click(page, contactButtonSelector)
+        await page.waitForSelector('.styles-module--wrapper--lJt7I ')
+        expect(page.url()).to.equal('https://rubyroidlabs.dev/contact/')
     }
     async contactUsArrowToTheRight() {
-        const contactUsXpath= '//*[@id="content"]/div/header/div/header/div[2]/div[1]/div[2]/a/span/text()'
-        const arrowSelector = '#content > div > header > div > header > div.styles-module--navigation--2vh3P > div.styles-module--nav--2gL6i > div.styles-module--link--ZNrzI > a > svg'
-        const contactBoundingBox = await (await page.waitForXPath(contactUsXpath)).boundingBox()
+        const contactUsSelector= '.styles-module--link--YZyu9 span'
+        const arrowSelector = '.styles-module--link--YZyu9 svg'
+        const contactBoundingBox = await (await page.$(contactUsSelector)).boundingBox()
         const arrowBoundingBox = await(await page.$(arrowSelector)).boundingBox()
         expect(contactBoundingBox.x).to.be.lessThan(arrowBoundingBox.x)
     }
     async burgerMenuLocation() {
-        const burgerSelector = '.styles-module--button--2i6R4'
-        const burgerBoundingBox = await(await page.$(burgerSelector)).boundingBox()
+        const burgerBoundingBox = await(await page.$(burgerMenuSelector)).boundingBox()
         expect(burgerBoundingBox.x).to.be.greaterThan(710)
-        expect(burgerBoundingBox.y).to.be.lessThan(30)
+        expect(burgerBoundingBox.y).to.be.lessThan(39)
     }
     async burgerMenuOpening() {
         const burgerSelector = '.styles-module--button--2i6R4' 
