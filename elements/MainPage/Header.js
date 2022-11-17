@@ -7,33 +7,33 @@ let mainpage
 
 mainpage = new Mainpage()
 
+// variables for the section
+var sectionSelector = '.styles-module--header--g--9a'
+var logoSelector = '.styles-module--logo--K3rL2'
+var rorButtonSelector = '.styles-module--linkRor--1uR-5.styles-module--link--8yY3g'
+var contactButtonSelector = '.styles-module--link--YZyu9'
+var burgerMenuSelector = '.styles-module--button--mm5wW'
+
+
 export default class Header {
     async headerLocation() {
-        const sectionSelector = '.styles-module--header--3iuKV'
         const section = await page.$(sectionSelector)
         const boundingBox = await section.boundingBox()
         expect(boundingBox.y).to.be.equal(0)
     }
     async isSectionDisplayed() {
-        const sectionSelector = '.styles-module--header--3iuKV'
         expect(await isElementVisible(sectionSelector)).to.be.true
     }
     async checkSectionContent() {
-        const logoSelector = '.styles-module--logo--3Gocn'
-        const rorButtonSelector = '.styles-module--linkRor--TEgXa.styles-module--link--ZNrzI'
-        const contactButtonSelector = '.styles-module--link--ZNrzI'
-        const burgerMenuSelector = '.styles-module--button--2i6R4'
         expect(await isElementVisible(logoSelector)).to.be.true
         expect(await isElementVisible(rorButtonSelector)).to.be.true
         expect(await isElementVisible(contactButtonSelector)).to.be.true
         expect(await isElementVisible(burgerMenuSelector)).to.be.true
     }
     async logoLocation() {
-        const logoSelector = '.styles-module--logo--3Gocn'
-        const logo = await page.$(logoSelector)
-        const boundingBox = await logo.boundingBox()
-        expect(boundingBox.x).to.be.lessThan(42)
-        expect(boundingBox.y).to.be.lessThan(25)
+        const logoBox = await(await page.$(logoSelector)).boundingBox()
+        expect(logoBox.x).to.be.lessThan(51)
+        expect(logoBox.y).to.be.lessThan(31)
     }
     async logoRedirection() {
         const logoSelector = '.styles-module--logo--3Gocn'
