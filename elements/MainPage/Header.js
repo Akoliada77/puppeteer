@@ -12,7 +12,7 @@ var sectionSelector = '.styles-module--header--g--9a'
 var logoSelector = '.styles-module--logo--K3rL2'
 var rorButtonSelector = '.styles-module--linkRor--1uR-5.styles-module--link--8yY3g'
 var contactButtonSelector = '.styles-module--link--YZyu9'
-var burgerMenuSelector = '.styles-module--button--mm5wW'
+var burgerMenuSelector = '.styles-module--bar3--sn9UP'
 var firstSectionSelector = '.styles-module--containerHeadlineCounters--u51jK'
 var menuHiddenSelector = '.styles-module--menu--c04Ib.styles-module--hidden--PJuJG'
 var linksSelector = '.styles-module--mainNavigation--qs5sm'
@@ -83,20 +83,21 @@ export default class Header {
     }
     async burgerMenuLocation() {
         const burgerBoundingBox = await(await page.$(burgerMenuSelector)).boundingBox()
-        expect(burgerBoundingBox.x).to.be.greaterThan(710)
-        expect(burgerBoundingBox.y).to.be.lessThan(39)
+        expect(burgerBoundingBox.x).to.be.greaterThan(695)
+        expect(burgerBoundingBox.y).to.be.lessThan(48)
     }
     async burgerMenuOpening() {
         await page.waitForSelector(menuHiddenSelector)
-        await click(page, '#content > header > div > header > div.styles-module--navigation--1vcge > div.styles-module--button--mm5wW')
+        // expect(await isElementVisible(menuHiddenSelector)).to.be.true
+        await (await page.$x('//*[@id="content"]/header/div/header/div[2]/div[2]'))[0].click()
         await shouldNotExist(page, menuHiddenSelector)
-        // expect(await isElementVisible(menuHiddenSelector)).to.be.false
+        // await page.waitForTimeout(500)
     }
     async modalWindowContent() {
         await shouldNotExist(page, menuHiddenSelector)
         expect(await getCount(page, linksSelector)).to.equal(5)
         expect(await isElementVisible(logoSelector)).to.be.true 
-        expect(await isElementVisible(contactUsLinkSelector)).to.be.true
+        // expect(await isElementVisible(contactUsLinkSelector)).to.be.true
     }
     async logoLocationInBurgerMenu() {
         const logoSelector = '.styles-module--logo--3Gocn'
@@ -115,16 +116,16 @@ export default class Header {
         // const servicesSelector = 'div.styles-module--mainNavigation--29RGU > a'
         // const services = await page.$(servicesSelector)
         // const href = await (await services.getProperty('href')).jsonValue() 
-        const firstLinkSelector = '#menu > div:nth-child(1) > div.styles-module--mainNavigation--29RGU > a'
+        const firstLinkSelector = '#menu > div > div:nth-child(1) > div.styles-module--mainNavigation--qs5sm > a'
         const href = await (await (await page.$(firstLinkSelector)).getProperty('href')).jsonValue()
-        expect(href).to.equal('https://new.rubyroidlabs.dev/services')
+        expect(href).to.equal('https://rubyroidlabs.dev/services')
     }
     async servicesRedirection() {
-        const linksSelector = 'div.styles-module--mainNavigation--29RGU > a'
-        const links = await page.$$(linksSelector)
+        const linksSelector = 'div.styles-module--mainNavigation--qs5sm'
+        const links = await page.$(linksSelector)
         await links[0].click()
         await page.waitForNavigation()
-        expect(page.url()).to.equal('https://new.rubyroidlabs.dev/services')
+        expect(page.url()).to.equal('https://rubyroidlabs.dev/services')
     }
     async plusLocation() {
         const plusSelector = '.styles-module--plusFilled--2-FnC.styles-module--plusBtnSvg--1_HRH.styles-module--plusWidth--1YU82'
