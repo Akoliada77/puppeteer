@@ -1,4 +1,4 @@
-const { click, doubleClick, getCount, getText, getTextXpath, rightClick, selectText, shouldNotExist, typeText, isElementVisible, isXpathVisible } = require('../../lib/helpers')
+const { click, doubleClick, getCount, getText, getTextXpath, rightClick, selectText, shouldNotExist, typeText, isElementVisible, isXpathVisible, clickOnCertainElement} = require('../../lib/helpers')
 const { generateEmail, generateID, generateNumbers } = require('../../lib/utils')
 import { expect, use } from 'chai'
 import Mainpage from '../../pages/MainPage'
@@ -121,9 +121,11 @@ export default class Header {
         expect(href).to.equal('https://rubyroidlabs.dev/services')
     }
     async servicesRedirection() {
-        const linksSelector = 'div.styles-module--mainNavigation--qs5sm'
-        const links = await page.$(linksSelector)
-        await links[0].click()
+        // const linksSelector = '.styles-module--mainNavigation--qs5sm > a'
+        // // const links = await page.$(linksSelector)
+        // // await links[0].click()
+        // await clickOnCertainElement(page, linksSelector, 0)
+        await click(page, '#menu > div > div:nth-child(1) > div.styles-module--mainNavigation--qs5sm > a')
         await page.waitForNavigation()
         expect(page.url()).to.equal('https://rubyroidlabs.dev/services')
     }
