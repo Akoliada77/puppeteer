@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer')
 
 module.exports = {
     launch: {
-        headless: false,
+        headless: true,
         // defaultViewport:{width:1920,height:1080},
         args: [
         //     '--disable-dev-shm-usage',

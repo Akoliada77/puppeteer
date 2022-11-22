@@ -8,21 +8,23 @@ let mainpage
 mainpage = new Mainpage()
 
 // variables for the section
-var sectionSelector = '.styles-module--container--34pZy'
-var titleSelector = '.styles-module--title--iIWVh.undefined'
-var subtitleSelector = '#content > div > div > section.styles-module--container--34pZy > div.scrollmagic-pin-spacer > div > div > div.styles-module--description--3_XND > p'
-var slideSelector = '.styles-module--slideWrapper--1e0Kl.slideWrapper'
-var circleButtonSelector = '.styles-module--largeCircleButton--1oaGQ.undefined.styles-module--size--2om9F'
-var pointsSelector = '.styles-module--imgBlock--nYMjz'
-var pointTitlesSelector = '#content > div > section.styles-module--container--34pZy > div.scrollmagic-pin-spacer > div > div > div.styles-module--slideContainer--tea2U.slideContainer > div h3'
-var pointDescriptionsSelector = '.styles-module--sectionParagraph--2gmTf'
+var sectionSelector = '[class="styles-module--container--+DUeJ"]'
+var sectionXpath = '//*[@id="content"]/div[2]/section[2]'
+var titleSelector = '.styles-module--wrapper--3-Zzo div'
+var subtitleSelector = 'div.styles-module--description--Mgq-b > p'
+var slideSelector = '.slideWrapper'
+var circleButtonSelector = '.styles-module--size--e7SzK'
+var pointsSelector = '.styles-module--imgBlock--nMiVK'
+var pointTitlesSelector = '.slideContainer > div h3'
+var pointDescriptionsSelector = '.styles-module--sectionParagraph--VPmM1'
 
 export default class DevelopmentSolutions {
     async isSectionDisplayed() {
-        expect(await isElementVisible(sectionSelector)).to.be.true
+        // expect(await isElementVisible('//*[@id="content"]/div[2]/section[2]')).to.be.true
+        await page.waitForXPath(sectionXpath)
     }
     async sectionLocation() {
-        const gridContainerSelector = '.styles-module--container--1XxoU' 
+        const gridContainerSelector = '[class="styles-module--gridContainer--AM+X1"]' 
         const gridContainerBox = await (await page.$(gridContainerSelector)).boundingBox()
         const sectionBox = await(await page.$(sectionSelector)).boundingBox()
         expect(sectionBox.y).to.greaterThan(gridContainerBox.y)
@@ -41,7 +43,7 @@ export default class DevelopmentSolutions {
         expect(titleBox.y).to.be.equal(sectionBox.y)
     }
     async titleText() {
-        expect(await getText(page, titleSelector)).to.equal('Development solutions based on your business situation')
+        expect(await getText(page, titleSelector)).to.include('Development solutions based on your business situation')
     }
     async subtitleLocation() {
         const subtitleBox = await(await page.$(subtitleSelector)).boundingBox()

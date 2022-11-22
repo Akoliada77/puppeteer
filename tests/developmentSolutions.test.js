@@ -20,6 +20,10 @@ describe ('Development solutions', () => {
         await mainpage.visit()
         await developmentsolutions.sectionLocation()
     })
+    it('Development solutions content', async () =>{
+        await mainpage.visit()
+        await developmentsolutions.sectionContent()
+    })
     it('title of Development solution location', async () =>{
         await mainpage.visit()
         await developmentsolutions.titleLocation()
