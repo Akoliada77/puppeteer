@@ -3,7 +3,7 @@ const { waitForText, shouldNotExist, click, getText, getTextXpath, getCount, typ
 const { generateID, generateEmail } = require("../lib/utils")
 const creds = require ('../creds.json')
 
-// variables for the section
+// variables for the page
 var mainSectionSelector = '.styles-module--imgBlock--SNqRi.styles-module--heightImage--6FZdC'
 
 export default class TeamPage {

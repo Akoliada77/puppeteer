@@ -14,7 +14,7 @@ teampage = new TeamPage()
 
 export default class GreenBlock {
     async isSectionDisplayed() {
-        await isElementVisible(sectionSelector).to.be.true
+        expect(await isElementVisible(sectionSelector)).to.be.true
     }
     async sectionContent() {
         expect(await getTextFromCertainElement(page, textSelector, 0)).to.eq('We love')

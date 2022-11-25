@@ -23,7 +23,7 @@ export default class FirstSection {
         expect(await isElementVisible(imageSelector)).to.be.true
         expect(await isElementVisible(subTitleSelector)).to.be.true
         expect(await isElementVisible(breadCrumbsSelector)).to.be.true
-        expect(await getText(page, `${titleSelector} h1`)).to.eq('Team.')
+        expect(await getText(page, `${titleSelector} h1`)).to.eq('Team')
         expect(await getText(page, subTitleSelector)).to.eq('Rubyroid Labs is a team of programmers, project managers, testers, designers and business analysts.')
     }
 }

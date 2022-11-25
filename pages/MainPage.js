@@ -3,13 +3,14 @@ const { waitForText, shouldNotExist, click, getText, getTextXpath, getCount, typ
 const { generateID, generateEmail } = require("../lib/utils")
 const creds = require ('../creds.json')
 
+// variables for the page
+var firstSectionSelector = '.styles-module--containerHeadlineCounters--u51jK'
 
 export default class MainPage {
     async visit() {
-        const firstSection = '.styles-module--container--nvzWT'
         const url = 'https://rubyroidlabs.dev/'
         await page.goto(url)
-        expect(await isElementVisible(firstSection)).to.be.true
+        expect(await isElementVisible(firstSectionSelector)).to.be.true
         expect(page.url()).to.equal(url)
     }
     async authorization() {
