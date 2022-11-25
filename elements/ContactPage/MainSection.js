@@ -1,4 +1,4 @@
-const { click, doubleClick, getCount, getText, getTextXpath, rightClick, selectText, shouldNotExist, typeText, isElementVisible, isXpathVisible } = require('../../lib/helpers')
+const { click, doubleClick, getCount, getText, getTextXpath, rightClick, selectText, shouldNotExist, typeText, isElementVisible, isXpathVisible, getTextFromCertainElement } = require('../../lib/helpers')
 const { generateEmail, generateID, generateNumbers } = require('../../lib/utils')
 import { expect, use } from 'chai'
 import Contactpage from '../../pages/ContactPage'
@@ -19,7 +19,7 @@ var active = '::after'
 var nextButtonSelector = '.styles-module--buttonColor--DAfu3'
 var backButtonSelector = '.styles-module--buttonColor--z2Vc8'
 var inputBlockSelector = '.styles-module--visible--Chk5Q.styles-module--stepThirdBlock--KdRQH'
-
+var questionTitleSelector = '.styles-module--titleBlock--rmFbV.h4'
 
 export default class MainSection {
     async isSectionDisplayed() {
@@ -27,7 +27,7 @@ export default class MainSection {
     }
 
     async textOfTitle() {
-        expect(await getText(page, sectionTitleSelector)).to.include('Estimate your project.')
+        expect(await getText(page, sectionTitleSelector)).to.include('Estimate your project')
     }
     async textOfSubtitles() {
         expect(await getText(page, sectionSubTitleSelector)).to.equal('Please fill in the form and our team will contact you in 24 business hours to help with the next steps.')
@@ -66,4 +66,8 @@ export default class MainSection {
         await page.waitForSelector(inputBlockSelector).catch(e => e)
         // expect(await isElementVisible(inputBlockSelector)).to.be.true
     } 
+    async questonTitles() {
+        expect(await getTextFromCertainElement(page, questionTitleSelector, 0)).to.eq('What are you looking for?')
+        expect(await getTextFromCertainElement(page, questionTitleSelector, 1)).to.eq('What additional services you may need?')
+    }
 }

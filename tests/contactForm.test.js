@@ -73,4 +73,8 @@ describe ('Contact Form', () => {
         await contactpage.visit()
         await ouroffices.warsawOfficeContent()
     })
+    it('Check questions titles', async() =>{
+        await contactpage.visit()
+        await mainsection.questonTitles()
+    })
 })

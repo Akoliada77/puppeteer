@@ -3,10 +3,12 @@ const { waitForText, shouldNotExist, click, getText, getTextXpath, getCount, typ
 const { generateID, generateEmail } = require("../lib/utils")
 const creds = require ('../creds.json')
 
+//variables for the page 
+const titleSelector = '.styles-module--titleBlock--fFcCI'
+
 
 export default class ContactPage {
     async visit() {
-        const titleSelector = '.styles-module--titleBlock--fFcCI'
         const url = 'https://rubyroidlabs.dev/contact'
         await page.goto(url)
         expect(await isElementVisible(titleSelector)).to.be.true
