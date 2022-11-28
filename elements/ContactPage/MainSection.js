@@ -1,4 +1,4 @@
-const { click, doubleClick, getCount, getText, getTextXpath, rightClick, selectText, shouldNotExist, typeText, isElementVisible, isXpathVisible, getTextFromCertainElement } = require('../../lib/helpers')
+const { click, doubleClick, getCount, getText, getTextXpath, rightClick, selectText, shouldNotExist, typeText, isElementVisible, isXpathVisible, getTextFromCertainElement, clickOnCertainElement } = require('../../lib/helpers')
 const { generateEmail, generateID, generateNumbers } = require('../../lib/utils')
 import { expect, use } from 'chai'
 import Contactpage from '../../pages/ContactPage'
@@ -69,5 +69,16 @@ export default class MainSection {
     async questonTitles() {
         expect(await getTextFromCertainElement(page, questionTitleSelector, 0)).to.eq('What are you looking for?')
         expect(await getTextFromCertainElement(page, questionTitleSelector, 1)).to.eq('What additional services you may need?')
+    }
+    async optionNotSelectedValidation() {
+        await shouldNotExist(page, '.styles-module--textErrorVisible--FuIVA')
+        // await clickOnCertainElement(page, nextButtonSelector, 0)
+        await doubleClick(page, '.styles-module--buttonColor--DAfu3')
+        await doubleClick(page, '.styles-module--buttonColor--DAfu3')
+        // await clickOnCertainElement(page, '.styles-module--button--4JFp1', 0)
+        // await(await page.$$('.styles-module--buttonColor--DAfu3'))[0].click()
+        // await click(page, '.styles-module--buttons--DTLNk')
+        // await click(page, '#content > div.content > div:nth-child(3) > form > div:nth-child(1) > div:nth-child(1) > div > div > div.styles-module--checkboxesBlock--oBuzV.undefined > div.styles-module--buttons--DTLNk > div > button > div')
+        expect(await isElementVisible('.styles-module--textErrorVisible--FuIVA')).to.be.true
     }
 }
