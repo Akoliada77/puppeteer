@@ -16,4 +16,16 @@ describe ('Why work with us section', () => {
         await wearehiring.visit()
         await firstSection.isSectionDisplayed()
     })
+    it('Check section content', async() =>{
+        await wearehiring.visit()
+        await firstSection.sectionContent()
+    })
+    it('Check text in the title of section', async() =>{
+        await wearehiring.visit()
+        await firstSection.titleText()
+    })
+    it('Check text in the subtitle of section', async() =>{
+        await wearehiring.visit()
+        await firstSection.subTitleText()
+    })
 })
